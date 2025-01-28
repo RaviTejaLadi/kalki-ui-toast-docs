@@ -1,4 +1,4 @@
-import { useEffect, useState, forwardRef } from 'react';
+import { useEffect, useState, forwardRef, useRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 import { ToastProps } from './types';
@@ -63,23 +63,40 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   ) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isHiding, setIsHiding] = useState(false);
+    const remainingTimeRef = useRef<number>(typeof autoClose === 'number' ? autoClose : 0);
+    const startTimeRef = useRef<number | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const startTimer = () => {
+      if (autoClose === false || remainingTimeRef.current <= 0) return;
+
+      startTimeRef.current = Date.now();
+      timeoutRef.current = setTimeout(() => {
+        setIsHiding(true);
+        setTimeout(onClose, 500);
+      }, remainingTimeRef.current);
+    };
+
+    const pauseTimer = () => {
+      if (timeoutRef.current && startTimeRef.current) {
+        clearTimeout(timeoutRef.current);
+        const elapsedTime = Date.now() - startTimeRef.current;
+        remainingTimeRef.current = Math.max(0, remainingTimeRef.current - elapsedTime);
+        startTimeRef.current = null;
+      }
+    };
 
     useEffect(() => {
       const showTimeout = setTimeout(() => setIsVisible(true), 100);
-
-      let hideTimeout: ReturnType<typeof setTimeout>;
-      if (autoClose !== false) {
-        hideTimeout = setTimeout(() => {
-          setIsHiding(true);
-          setTimeout(onClose, 500);
-        }, autoClose);
-      }
+      startTimer();
 
       return () => {
         clearTimeout(showTimeout);
-        if (hideTimeout) clearTimeout(hideTimeout);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
       };
-    }, [onClose, autoClose]);
+    }, []);
 
     return (
       <div
@@ -96,6 +113,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         )}
         style={style}
         role="alert"
+        onMouseEnter={pauseTimer}
+        onMouseLeave={startTimer}
         {...props}
       >
         <div className="flex items-center gap-3 px-2 py-1 w-full min-w-0">
