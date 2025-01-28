@@ -9,7 +9,7 @@ const Logo = () => {
       </div>
       <div className="flex flex-col">
         <span className="text-md my-0 font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-          Kalki Toast Pro
+          Kalki UI Toast
         </span>
         <span className="text-[.5rem] font-medium -mt-2 text-gray-500 tracking-wider">PREMIUM</span>
       </div>
