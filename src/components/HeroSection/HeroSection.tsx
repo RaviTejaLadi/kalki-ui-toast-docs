@@ -22,7 +22,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-16 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5" />
       <div className="container relative mx-auto px-4 text-center">
         <div className="animate-fade-in">
@@ -38,14 +38,14 @@ const HeroSection = () => {
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <Button
               onClick={showMultilineToast}
-              size="lg"
+              size={"sm"}
               className="shadow-lg"
             >
               Try it out
             </Button>
             <Button
               variant="outline"
-              size="lg"
+              size={"sm"}
               onClick={() =>
                 document
                   .getElementById("docs")

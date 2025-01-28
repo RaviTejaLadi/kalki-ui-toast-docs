@@ -20,6 +20,7 @@ const CustomStyling = () => {
               icon: <Lightbulb className="w-5 h-5" />,
             })
           }
+          size={"xs"}
         >
           Gradient Style
         </Button>
@@ -32,6 +33,7 @@ const CustomStyling = () => {
               icon: <Settings2 className="w-5 h-5" />,
             })
           }
+          size={"xs"}
         >
           Custom Blue
         </Button>
@@ -44,6 +46,7 @@ const CustomStyling = () => {
               icon: <Palette className="w-5 h-5" />,
             })
           }
+          size={"xs"}
         >
           Nature Theme
         </Button>

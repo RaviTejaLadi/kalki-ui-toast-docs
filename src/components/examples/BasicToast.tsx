@@ -34,6 +34,7 @@ const BasicToast = () => {
           onClick={() => showExampleToast("success")}
           className="w-full"
           variant="success"
+          size={"xs"}
         >
           <Check className="w-4 h-4 mr-2" /> Success
         </Button>
@@ -41,6 +42,7 @@ const BasicToast = () => {
           onClick={() => showExampleToast("danger")}
           className="w-full"
           variant="danger"
+          size={"xs"}
         >
           <X className="w-4 h-4 mr-2" /> Error
         </Button>
@@ -54,6 +56,7 @@ const BasicToast = () => {
           }
           className="w-full"
           variant="warning"
+          size={"xs"}
         >
           <AlertCircle className="w-4 h-4 mr-2" /> Warning
         </Button>

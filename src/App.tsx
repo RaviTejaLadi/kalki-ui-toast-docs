@@ -5,6 +5,9 @@ import BasicToast from "./components/examples/BasicToast";
 import CustomStyling from "./components/examples/CustomStyling";
 import AdvancedFeatures from "./components/examples/AdvancedFeatures";
 import Documentation from "./components/Docs/Documentation";
+import PositionsExample from "./components/examples/PositionsExample";
+import VariantsExample from "./components/examples/VariantsExample";
+import ToastBomb from "./components/examples/ToastBomb";
 
 function App() {
   return (
@@ -17,7 +20,7 @@ function App() {
         <HeroSection />
 
         {/* Interactive Examples Section */}
-        <section id="examples" className="py-20 ">
+        <section id="examples" className="py-10 ">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-foreground mb-12">
               Interactive Examples
@@ -34,7 +37,13 @@ function App() {
             </div>
           </div>
         </section>
-
+        <section id="examples" className="py-20 ">
+          <div className="flex items-center px-4 ">
+            <PositionsExample />
+            <VariantsExample />
+          </div>
+        </section>
+<ToastBomb/>
         {/* Documentation Section */}
         <section id="docs" className="py-20">
           <div className="container mx-auto px-4">
