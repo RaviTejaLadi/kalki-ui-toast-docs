@@ -1,15 +1,15 @@
-import { useEffect, useState, forwardRef, useRef } from 'react';
+import { useEffect, useState, forwardRef, useRef, useCallback } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 import { ToastProps } from './types';
 import { cn } from '@/lib/utils';
 
 const toastVariants = cva(
-  'relative flex items-center w-fit justify-between shadow-lg transition-all duration-500 max-w-[calc(100vw-2rem)]',
+  'relative flex items-center w-fit justify-between  transition-all duration-500 max-w-[calc(100vw-2rem)]',
   {
     variants: {
       variant: {
-        default: 'bg-white text-gray-800 border border-gray-300',
+        default: 'bg-white text-gray-800 border border-gray-300 shadow-sm',
         primary: 'bg-blue-50 text-blue-800 border border-blue-200',
         secondary: 'bg-gray-50 text-gray-800 border border-gray-200',
         success: 'bg-green-50 text-green-800 border border-green-200',
@@ -67,7 +67,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
     const startTimeRef = useRef<number | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const startTimer = () => {
+    const startTimer = useCallback(() => {
       if (autoClose === false || remainingTimeRef.current <= 0) return;
 
       startTimeRef.current = Date.now();
@@ -75,7 +75,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         setIsHiding(true);
         setTimeout(onClose, 500);
       }, remainingTimeRef.current);
-    };
+    }, [autoClose, onClose]);
 
     const pauseTimer = () => {
       if (timeoutRef.current && startTimeRef.current) {
@@ -96,7 +96,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
           clearTimeout(timeoutRef.current);
         }
       };
-    }, []);
+    }, [startTimer]);
 
     return (
       <div
@@ -119,14 +119,14 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       >
         <div className="flex items-center gap-3 px-2 py-1 w-full min-w-0">
           {icon && <span className="flex-shrink-0 text-current">{icon}</span>}
-          <div className="flex-1 text-sm font-medium break-words">{message}</div>
+          <div className="flex-1 text-xs font-medium break-words">{message}</div>
           {showClose && (
             <button
               onClick={onClose}
               className="flex-shrink-0 p-1.5 rounded-lg bg-inherit transition-colors ml-2"
               aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
