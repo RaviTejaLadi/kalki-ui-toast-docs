@@ -1,6 +1,6 @@
-import { BookOpen, ShoppingCart } from "lucide-react";
-import { useToast } from "../common/toast/ToastContext";
-import Button from "../common/Button";
+import { BookOpen, ShoppingCart } from 'lucide-react';
+import { useToast } from '../common/toast/ToastContext';
+import Button from '../common/Button';
 
 const HeroSection = () => {
   const { addToast } = useToast();
@@ -10,13 +10,11 @@ const HeroSection = () => {
       message: (
         <div className="flex flex-col gap-1">
           <p className="font-semibold">Order Confirmed!</p>
-          <p className="text-sm text-muted-foreground">
-            Your order #12345 has been placed successfully.
-          </p>
+          <p className="text-sm text-muted-foreground">Your order #12345 has been placed successfully.</p>
         </div>
       ),
       icon: <ShoppingCart className="w-5 h-5" />,
-      variant: "success",
+      variant: 'success',
       autoClose: 5000,
     });
   };
@@ -32,25 +30,16 @@ const HeroSection = () => {
             for React Applications
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            A lightweight, customizable, and accessible toast notification
-            system built with React and Tailwind CSS.
+            A lightweight, customizable, and accessible toast notification system built with React and Tailwind CSS.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Button
-              onClick={showMultilineToast}
-              size={"sm"}
-              className="shadow-lg"
-            >
+            <Button onClick={showMultilineToast} size={'sm'} className="shadow-lg">
               Try it out
             </Button>
             <Button
               variant="outline"
-              size={"sm"}
-              onClick={() =>
-                document
-                  .getElementById("docs")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              size={'sm'}
+              onClick={() => document.getElementById('docs')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-inherit text-foreground shadow-lg"
             >
               <BookOpen className="mr-2 w-4 h-4" />

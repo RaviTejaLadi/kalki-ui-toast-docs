@@ -1,5 +1,5 @@
-import { ToastPosition } from "@/components/common/toast";
-import { create } from "zustand";
+import { ToastPosition } from '@/components/common/toast';
+import { create } from 'zustand';
 
 interface ToastStore {
   position: ToastPosition;
@@ -7,6 +7,6 @@ interface ToastStore {
 }
 
 export const useToastStore = create<ToastStore>((set) => ({
-  position: "top-center",
+  position: 'top-center',
   setPosition: (position) => set({ position }),
 }));

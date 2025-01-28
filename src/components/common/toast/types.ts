@@ -25,13 +25,7 @@ export interface ToastProps {
   onClose: () => void;
 }
 
-export type ToastPosition =
-  | 'top-right'
-  | 'top-center'
-  | 'top-left'
-  | 'bottom-right'
-  | 'bottom-center'
-  | 'bottom-left';
+export type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
 
 export interface ToastContainerProps {
   position?: ToastPosition;

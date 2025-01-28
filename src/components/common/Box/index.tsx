@@ -1,7 +1,7 @@
-import { forwardRef } from "react";
-import type { BoxProps } from "./types";
-import { boxVariants } from "./boxVariants";
-import { cn } from "@/lib/utils";
+import { forwardRef } from 'react';
+import type { BoxProps } from './types';
+import { boxVariants } from './boxVariants';
+import { cn } from '@/lib/utils';
 
 /**
  * A Box component that serves as a flexible container with various styling options.
@@ -33,18 +33,18 @@ import { cn } from "@/lib/utils";
 const Box = forwardRef<HTMLDivElement, BoxProps>(
   (
     {
-      width = "auto",
-      height = "auto",
+      width = 'auto',
+      height = 'auto',
       shadow,
       rounded = false,
       children,
       outlined = false,
       className,
-      margin = "0",
-      padding = "0",
+      margin = '0',
+      padding = '0',
       color,
       backgroundColor,
-      display = "block",
+      display = 'block',
       flexDirection,
       flexWrap,
       justifyContent,
@@ -80,19 +80,14 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
     };
 
     return (
-      <div
-        style={inlineStyles}
-        ref={ref}
-        className={cn(classNames, className)}
-        {...rest}
-      >
+      <div style={inlineStyles} ref={ref} className={cn(classNames, className)} {...rest}>
         {children}
       </div>
     );
   }
 );
 
-Box.displayName = "Box";
+Box.displayName = 'Box';
 
 export default Box;
 export { BoxProps };

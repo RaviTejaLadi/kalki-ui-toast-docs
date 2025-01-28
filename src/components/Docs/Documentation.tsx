@@ -1,5 +1,5 @@
-import { Tab, Tabs } from "../common/Tabs/Tabs";
-import { usage } from "./data";
+import { Tab, Tabs } from '../common/Tabs/Tabs';
+import { usage } from './data';
 
 const Documentation = () => {
   return (

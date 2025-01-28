@@ -1,18 +1,18 @@
-import { ToastVariant, useToast } from "../common/toast";
-import { SyntaxHighlighter } from "../common/SyntaxHighLighter/SyntaxHighLighter";
-import Button from "../common/Button";
+import { ToastVariant, useToast } from '../common/toast';
+import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
+import Button from '../common/Button';
 
 const variants: { label: string; value: ToastVariant }[] = [
-  { label: "Default", value: "default" },
-  { label: "Primary", value: "primary" },
-  { label: "Secondary", value: "secondary" },
-  { label: "Success", value: "success" },
-  { label: "Info", value: "info" },
-  { label: "Warning", value: "warning" },
-  { label: "Danger", value: "danger" },
-  { label: "Help", value: "help" },
-  { label: "Light", value: "light" },
-  { label: "Dark", value: "dark" },
+  { label: 'Default', value: 'default' },
+  { label: 'Primary', value: 'primary' },
+  { label: 'Secondary', value: 'secondary' },
+  { label: 'Success', value: 'success' },
+  { label: 'Info', value: 'info' },
+  { label: 'Warning', value: 'warning' },
+  { label: 'Danger', value: 'danger' },
+  { label: 'Help', value: 'help' },
+  { label: 'Light', value: 'light' },
+  { label: 'Dark', value: 'dark' },
 ];
 
 const VariantsExample = () => {
@@ -27,19 +27,17 @@ const VariantsExample = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto ">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
-        Explore Toast Variants
-      </h3>
+    <div className="w-full mx-auto ">
+      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Explore Toast Variants</h3>
 
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col  gap-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {variants.map(({ label, value }) => (
             <Button
               key={value}
               onClick={() => handleVariantToast(value)}
-              variant={value === "default" ? "outline" : value}
-              size={"xs"}
+              variant={value === 'default' ? 'outline' : value}
+              size={'xs'}
             >
               {label}
             </Button>

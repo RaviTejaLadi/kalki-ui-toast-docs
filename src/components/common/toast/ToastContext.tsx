@@ -15,19 +15,12 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const addToast = useCallback(
     (toast: Omit<ToastProps, 'id' | 'onClose'>) => {
       const id = toastId++;
-      setToasts((prev) => [
-        ...prev,
-        { ...toast, id, onClose: () => removeToast(id) },
-      ]);
+      setToasts((prev) => [...prev, { ...toast, id, onClose: () => removeToast(id) }]);
     },
     [removeToast]
   );
 
-  return (
-    <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
-      {children}
-    </ToastContext.Provider>
-  );
+  return <ToastContext.Provider value={{ toasts, addToast, removeToast }}>{children}</ToastContext.Provider>;
 }
 
 export function useToast() {
