@@ -103,9 +103,9 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
             aria-label={isCopied ? 'Copied!' : 'Copy code'}
           >
             {isCopied ? (
-              <Check className={`${currentTheme.icon} transition-all duration-200 size-4`} />
+              <Check className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
             ) : (
-              <Clipboard className={`${currentTheme.icon} transition-all duration-200 size-4`} />
+              <Clipboard className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
             )}
           </button>
         </div>

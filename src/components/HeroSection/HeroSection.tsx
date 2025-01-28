@@ -1,6 +1,7 @@
 import { BookOpen, ShoppingCart } from 'lucide-react';
 import { useToast } from '../common/toast/ToastContext';
 import Button from '../common/Button';
+import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
 
 const HeroSection = () => {
   const { addToast } = useToast();
@@ -19,12 +20,16 @@ const HeroSection = () => {
     });
   };
 
+  const installationContent = `npm install kalki-ui-toast`;
+
   return (
     <section className="relative py-16 md:py-16 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5" />
       <div className="container relative mx-auto px-4 text-center">
         <div className="animate-fade-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+          <div className='flex flex-col justify-center'>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
             Beautiful Toast Notifications
             <br />
             for React Applications
@@ -32,6 +37,10 @@ const HeroSection = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             A lightweight, customizable, and accessible toast notification system built with React and Tailwind CSS.
           </p>
+          <div className="w-fit mx-auto">
+            <SyntaxHighlighter code={installationContent} language="jsx" />
+          </div>
+          </div>
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <Button onClick={showMultilineToast} size={'sm'} className="shadow-lg">
               Try it out
