@@ -2,15 +2,15 @@ import { useToastStore } from '@/store/useToastPositionStore';
 import { ToastPosition, useToast } from '../common/toast';
 import { ShoppingCart } from 'lucide-react';
 import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
-import Button from '../common/Button';
+import Button, { ButtonIcon, ButtonText } from '../common/Button';
 
-const positions: { label: string; value: ToastPosition }[] = [
-  { label: 'Top Left', value: 'top-left' },
-  { label: 'Top Center', value: 'top-center' },
-  { label: 'Top Right', value: 'top-right' },
-  { label: 'Bottom Left', value: 'bottom-left' },
-  { label: 'Bottom Center', value: 'bottom-center' },
-  { label: 'Bottom Right', value: 'bottom-right' },
+const positions: { label: string; value: ToastPosition; icon: string }[] = [
+  { label: 'Top Left', value: 'top-left', icon: '↖️' },
+  { label: 'Top Center', value: 'top-center', icon: '⬆️' },
+  { label: 'Top Right', value: 'top-right', icon: '↗️' },
+  { label: 'Bottom Left', value: 'bottom-left', icon: '↙️' },
+  { label: 'Bottom Center', value: 'bottom-center', icon: '⬇️' },
+  { label: 'Bottom Right', value: 'bottom-right', icon: '↘️' },
 ];
 
 const PositionsExample = () => {
@@ -33,14 +33,15 @@ const PositionsExample = () => {
 
       <div className="flex flex-col gap-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {positions.map(({ label, value }) => (
+          {positions.map(({ label, value, icon }) => (
             <Button
               key={value}
               onClick={() => positionsToast(value)}
               variant={position === value ? 'primary' : 'outline'}
               size={'xs'}
             >
-              {label}
+              <ButtonIcon className="mr-2">{icon}</ButtonIcon>
+              <ButtonText>{label}</ButtonText>
             </Button>
           ))}
         </div>

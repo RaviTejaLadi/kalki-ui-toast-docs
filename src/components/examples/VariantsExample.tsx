@@ -1,18 +1,20 @@
 import { ToastVariant, useToast } from '../common/toast';
 import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
-import Button from '../common/Button';
+import Button, { ButtonText, ButtonIcon } from '../common/Button';
 
-const variants: { label: string; value: ToastVariant }[] = [
-  { label: 'Default', value: 'default' },
-  { label: 'Primary', value: 'primary' },
-  { label: 'Secondary', value: 'secondary' },
-  { label: 'Success', value: 'success' },
-  { label: 'Info', value: 'info' },
-  { label: 'Warning', value: 'warning' },
-  { label: 'Danger', value: 'danger' },
-  { label: 'Help', value: 'help' },
-  { label: 'Light', value: 'light' },
-  { label: 'Dark', value: 'dark' },
+import { Circle, CircleDot, Info, CheckCircle, AlertTriangle, XCircle, HelpCircle, Sun, Moon } from 'lucide-react';
+
+const variants: { label: string; value: ToastVariant; icon: JSX.Element }[] = [
+  { label: 'Default', value: 'default', icon: <Circle className="h-3.5 w-3.5" /> }, // Neutral
+  { label: 'Primary', value: 'primary', icon: <CircleDot className="h-3.5 w-3.5" /> }, // Highlighted dot
+  { label: 'Secondary', value: 'secondary', icon: <Circle className="h-3.5 w-3.5" /> }, // Simple circle
+  { label: 'Success', value: 'success', icon: <CheckCircle className="h-3.5 w-3.5" /> }, // Checkmark circle
+  { label: 'Info', value: 'info', icon: <Info className="h-3.5 w-3.5" /> }, // Info icon
+  { label: 'Warning', value: 'warning', icon: <AlertTriangle className="h-3.5 w-3.5" /> }, // Warning triangle
+  { label: 'Danger', value: 'danger', icon: <XCircle className="h-3.5 w-3.5" /> }, // Cross circle
+  { label: 'Help', value: 'help', icon: <HelpCircle className="h-3.5 w-3.5" /> }, // Help circle
+  { label: 'Light', value: 'light', icon: <Sun className="h-3.5 w-3.5" /> }, // Sun icon
+  { label: 'Dark', value: 'dark', icon: <Moon className="h-3.5 w-3.5" /> }, // Moon icon
 ];
 
 const VariantsExample = () => {
@@ -32,14 +34,15 @@ const VariantsExample = () => {
 
       <div className="flex flex-col  gap-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {variants.map(({ label, value }) => (
+          {variants.map(({ label, value, icon }) => (
             <Button
               key={value}
               onClick={() => handleVariantToast(value)}
               variant={value === 'default' ? 'outline' : value}
               size={'xs'}
             >
-              {label}
+              <ButtonIcon className="mr-2">{icon}</ButtonIcon>
+              <ButtonText>{label}</ButtonText>
             </Button>
           ))}
         </div>

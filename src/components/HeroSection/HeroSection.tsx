@@ -27,19 +27,18 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5" />
       <div className="container relative mx-auto px-4 text-center">
         <div className="animate-fade-in">
-          <div className='flex flex-col justify-center'>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
-            Beautiful Toast Notifications
-            <br />
-            for React Applications
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            A lightweight, customizable, and accessible toast notification system built with React and Tailwind CSS.
-          </p>
-          <div className="w-fit mx-auto">
-            <SyntaxHighlighter code={installationContent} language="jsx" />
-          </div>
+          <div className="flex flex-col justify-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+              Beautiful Toast Notifications
+              <br />
+              for React Applications
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              A lightweight, customizable, and accessible toast notification system built with React and Tailwind CSS.
+            </p>
+            <div className="w-fit mx-auto">
+              <SyntaxHighlighter code={installationContent} language="jsx" />
+            </div>
           </div>
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <Button onClick={showMultilineToast} size={'sm'} className="shadow-lg">
