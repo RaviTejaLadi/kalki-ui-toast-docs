@@ -27,13 +27,13 @@ function App() {
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-16">Interactive Examples</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="p-6  transition-shadow duration-300">
+              <div className="p-6  rounded-md border dark:border-gray-200/10 transition-shadow duration-300">
                 <BasicToast />
               </div>
-              <div className="p-6 transition-shadow duration-300">
+              <div className="p-6 rounded-md border dark:border-gray-200/10 transition-shadow duration-300">
                 <CustomStyling />
               </div>
-              <div className="p-6  transition-shadow duration-300">
+              <div className="p-6 rounded-md border dark:border-gray-200/10  transition-shadow duration-300">
                 <AdvancedFeatures />
               </div>
             </div>
@@ -57,7 +57,7 @@ function App() {
         {/* Toast Bomb Demo Section */}
         <section className="py-16">
           <div className="container mx-auto px-4 flex justify-center">
-            <div className="p-8 max-w-xl w-full">
+            <div className="p-8 max-w-xl w-full rounded-md border dark:border-gray-200/10">
               <ToastBomb />
             </div>
           </div>
