@@ -88,15 +88,15 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
 
   return (
     <div
-      className={`group relative border rounded-xl overflow-hidden backdrop-blur-xl backdrop-saturate-150 
+      className={`group relative border rounded-md overflow-hidden backdrop-blur-xl backdrop-saturate-150 
       ${currentTheme.background} ${currentTheme.border} ${currentTheme.shadow} mb-6 
-      before:absolute before:inset-0 before:rounded-xl ${currentTheme.glassShadow}`}
+      before:absolute before:inset-0 before:rounded-md ${currentTheme.glassShadow}`}
     >
       <div className="relative">
         <div className="absolute right-4 top-4 z-10">
           <button
             onClick={handleCopy}
-            className={`opacity-0 group-hover:opacity-100 p-2 rounded-lg transition-all duration-200 
+            className={`opacity-0 group-hover:opacity-100 p-2 rounded-md transition-all duration-200 
             ${currentTheme.buttonHover} ${currentTheme.background} 
             active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/40`}
             title={isCopied ? 'Copied!' : 'Copy code'}
@@ -147,7 +147,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
                 highlightActiveLine: false,
                 tabSize: 2,
               }}
-              className="text-sm font-medium leading-6"
+              className="text-xs font-medium leading-6 p-2"
               {...rest}
             />
           )}

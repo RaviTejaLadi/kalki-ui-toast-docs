@@ -10,18 +10,9 @@ const TopBar = () => {
           <div className="flex items-center gap-2">
             <Logo />
           </div>
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground">
-              Features
-            </a>
-            <a href="#docs" className="text-sm text-muted-foreground hover:text-foreground">
-              Documentation
-            </a>
-            <a href="#examples" className="text-sm text-muted-foreground hover:text-foreground">
-              Examples
-            </a>
+          <div className="hidden md:flex items-center gap-2">
             <a href="https://github.com" className="text-sm text-muted-foreground hover:text-foreground">
-              <Github className="w-5 h-5" />
+              <Github className="w-3.5 h-3.5" />
             </a>
             <ThemeToggle />
           </div>

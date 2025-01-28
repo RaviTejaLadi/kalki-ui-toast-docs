@@ -5,7 +5,7 @@ import { ToastProps } from "./types";
 import { cn } from "@/lib/utils";
 
 const toastVariants = cva(
-  "relative flex items-center justify-between min-h-[48px] shadow-lg transition-all duration-500 max-w-[calc(100vw-2rem)]",
+  "relative flex items-center w-fit justify-between shadow-lg transition-all duration-500 max-w-[calc(100vw-2rem)]",
   {
     variants: {
       variant: {
@@ -98,7 +98,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         role="alert"
         {...props}
       >
-        <div className="flex items-center gap-3 px-4 py-3 w-full min-w-0">
+        <div className="flex items-center gap-3 px-2 py-1 w-full min-w-0">
           {icon && <span className="flex-shrink-0 text-current">{icon}</span>}
           <div className="flex-1 text-sm font-medium break-words">
             {message}

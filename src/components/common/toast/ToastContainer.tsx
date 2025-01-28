@@ -5,7 +5,7 @@ import { useToast } from './ToastContext';
 import { cn } from '@/lib/utils';
 
 const containerVariants = cva(
-  'fixed z-50 flex flex-col gap-3 p-4 pointer-events-none max-w-[100vw] max-h-[100vh] overflow-hidden',
+  'fixed z-50 flex flex-col gap-3 pointer-events-none max-w-[100vw] max-h-[100vh] overflow-hidden',
   {
     variants: {
       position: {
