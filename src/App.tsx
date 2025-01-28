@@ -8,6 +8,7 @@ import Documentation from './components/Docs/Documentation';
 import PositionsExample from './components/examples/PositionsExample';
 import VariantsExample from './components/examples/VariantsExample';
 import ToastBomb from './components/examples/ToastBomb';
+import ToastInstallationCard from './components/HeroSection/ToastInstallationCard';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
           <HeroSection />
+          <ToastInstallationCard />
         </section>
 
         {/* Interactive Examples Section */}

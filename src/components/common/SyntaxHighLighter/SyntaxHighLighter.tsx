@@ -6,18 +6,22 @@ import { javascript } from '@codemirror/lang-javascript';
 import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
 import { useTheme } from '@/components/context/ThemeContext';
+import { indentUnit } from '@codemirror/language';
+import { EditorState } from '@codemirror/state';
 
 interface SyntaxHighlighterProps {
   code: string;
   language?: string;
   lineNumbers?: boolean;
   title?: string;
+  showCopyButton?: boolean;
 }
 
 export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
   code,
   language = 'jsx',
   lineNumbers = false,
+  showCopyButton = true,
   ...rest
 }) => {
   const { theme } = useTheme();
@@ -35,7 +39,11 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
   };
 
   const getLanguageExtension = () => {
-    return languageMap[language as keyof typeof languageMap] || [javascript()];
+    return [
+      ...(languageMap[language as keyof typeof languageMap] || [javascript()]),
+      indentUnit.of('  '), // Set consistent 2-space indentation
+      EditorState.tabSize.of(2),
+    ];
   };
 
   useEffect(() => {
@@ -89,32 +97,34 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
   return (
     <div
       className={`group relative border rounded-md overflow-hidden backdrop-blur-xl backdrop-saturate-150 
-      ${currentTheme.background} ${currentTheme.border} ${currentTheme.shadow} mb-6 
-      before:absolute before:inset-0 before:rounded-md ${currentTheme.glassShadow}`}
+        ${currentTheme.background} ${currentTheme.border} ${currentTheme.shadow} mb-6 
+        before:absolute before:inset-0 before:rounded-md ${currentTheme.glassShadow}`}
     >
       <div className="relative">
-        <div className="absolute right-4 top-4 z-10">
-          <button
-            onClick={handleCopy}
-            className={`opacity-0 group-hover:opacity-100 p-2 rounded-md transition-all duration-200 
-            ${currentTheme.buttonHover} ${currentTheme.background} 
-            active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/40`}
-            title={isCopied ? 'Copied!' : 'Copy code'}
-            aria-label={isCopied ? 'Copied!' : 'Copy code'}
-          >
-            {isCopied ? (
-              <Check className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
-            ) : (
-              <Clipboard className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
-            )}
-          </button>
-        </div>
+        {showCopyButton && (
+          <div className="absolute right-4 top-4 z-10">
+            <button
+              onClick={handleCopy}
+              className={`opacity-0 group-hover:opacity-100 p-2 rounded-md transition-all duration-200 
+                ${currentTheme.buttonHover} ${currentTheme.background} 
+                active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/40`}
+              title={isCopied ? 'Copied!' : 'Copy code'}
+              aria-label={isCopied ? 'Copied!' : 'Copy code'}
+            >
+              {isCopied ? (
+                <Check className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
+              ) : (
+                <Clipboard className={`${currentTheme.icon} transition-all duration-200 size-3.5`} />
+              )}
+            </button>
+          </div>
+        )}
 
         <div className="relative">
           {isLoading ? (
             <div
               className={`flex justify-center items-center h-24 ${currentTheme.loadingBackground} 
-              ${currentTheme.text}`}
+                ${currentTheme.text}`}
             >
               <div className="animate-pulse flex items-center space-x-2">
                 <div className="w-2 h-2 bg-current rounded-full animate-bounce" />
