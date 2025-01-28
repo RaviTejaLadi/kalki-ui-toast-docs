@@ -13,8 +13,8 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TopBar from "./components/TopBar/TopBar";
-import Footer from "./components/Footer/Footer";
+import TopBar from "./components/layout/TopBar/TopBar";
+import Footer from "./components/layout/Footer/Footer";
 import HeroSection from "./components/HeroSection/HeroSection";
 
 function App() {
