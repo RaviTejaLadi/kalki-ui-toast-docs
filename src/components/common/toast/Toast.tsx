@@ -5,7 +5,7 @@ import { ToastProps } from './types';
 import { cn } from '@/lib/utils';
 
 const toastVariants = cva(
-  'relative flex items-center w-fit justify-between  transition-all duration-500 max-w-[calc(100vw-2rem)]',
+  'relative flex items-center mt-2 w-fit justify-between  transition-all duration-500 max-w-[calc(100vw-2rem)]',
   {
     variants: {
       variant: {
