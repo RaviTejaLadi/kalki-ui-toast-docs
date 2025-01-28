@@ -1,29 +1,29 @@
 import { ToastVariant, useToast } from '../common/toast';
 import Button from '../common/Button';
 
-const variants: { label: string; value: ToastVariant }[] = [
-  { label: 'Default', value: 'default' },
-  { label: 'Primary', value: 'primary' },
-  { label: 'Secondary', value: 'secondary' },
-  { label: 'Success', value: 'success' },
-  { label: 'Info', value: 'info' },
-  { label: 'Warning', value: 'warning' },
-  { label: 'Danger', value: 'danger' },
-  { label: 'Help', value: 'help' },
-  { label: 'Light', value: 'light' },
-  { label: 'Dark', value: 'dark' },
+const variants: { label: string; value: ToastVariant; message: string }[] = [
+  { label: 'Default', value: 'default', message: 'Just a simple toast! 😊' },
+  { label: 'Primary', value: 'primary', message: 'This is a primary toast! 🔵' },
+  { label: 'Secondary', value: 'secondary', message: 'Check out this secondary toast! ⚪️' },
+  { label: 'Success', value: 'success', message: 'Success! 🎉 Your operation was successful.' },
+  { label: 'Info', value: 'info', message: 'Here’s some info for you! ℹ️' },
+  { label: 'Warning', value: 'warning', message: 'Warning! ⚠️ Proceed with caution.' },
+  { label: 'Danger', value: 'danger', message: 'Danger! 🚨 Something went wrong.' },
+  { label: 'Help', value: 'help', message: 'Need help? 🆘 Here’s a toast for that!' },
+  { label: 'Light', value: 'light', message: 'Light mode activated! 💡' },
+  { label: 'Dark', value: 'dark', message: 'Dark mode is the way! 🌙' },
 ];
 
 const ToastBomb = () => {
   const { addToast } = useToast();
 
   const handleToastBomb = () => {
-    variants.forEach(({ value }, index) => {
+    variants.forEach(({ value, message }, index) => {
       setTimeout(() => {
         addToast({
-          message: `This is a ${value} toast!`,
+          message,
           variant: value,
-          autoClose: index * 3000,
+          autoClose: (index + 1) * 3000,
         });
       }, index * 500); // Delay each toast by 500ms
     });
