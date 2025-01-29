@@ -8,21 +8,26 @@ interface usageData {
   icon: ReactNode;
 }
 
-const installationContent = `npm install kalki-ui-toast`;
+const installationContent = `
+npm install kalki-ui-toast
+# or
+yarn add kalki-ui-toast
+`;
 
 const setupContent = `
-import { ToastProvider } from '@your-org/toast-ui';
+import { ToastProvider, ToastContainer } from 'kalki-ui-toast';
 
 function App() {
   return (
     <ToastProvider>
       <YourApp />
+      <ToastContainer />
     </ToastProvider>
   );
 }
 `;
 const usageContent = `
-import { useToast } from '@your-org/toast-ui';
+import { useToast } from 'kalki-ui-toast';
 
 function MyComponent() {
   const { addToast } = useToast();

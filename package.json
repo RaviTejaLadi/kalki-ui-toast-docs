@@ -58,7 +58,9 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "input-otp": "^1.2.4",
+    "kalki-ui-toast": "^1.0.0",
     "lucide-react": "^0.474.0",
+    "prettier": "^2.6.2",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
@@ -70,8 +72,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.0.0",
     "zod": "^3.23.8",
-    "zustand": "^5.0.3",
-    "prettier": "^2.6.2"
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

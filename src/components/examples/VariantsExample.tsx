@@ -25,6 +25,8 @@ const VariantsExample = () => {
       message: `This is a ${variant} toast!`,
       variant,
       autoClose: 3000,
+      showClose:false,
+      icon: variants.find((v) => v.value === variant)?.icon,
     });
   };
 
