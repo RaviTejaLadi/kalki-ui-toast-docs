@@ -10,7 +10,7 @@ interface usageData {
 
 const installationContent = `
 npm install kalki-ui-toast
-# or
+          or
 yarn add kalki-ui-toast
 `;
 
@@ -92,7 +92,7 @@ export const usage: usageData[] = [
         <h3 className="text-xl text-foreground font-semibold mb-4">API Reference</h3>
         <div className="space-y-6">
           <div>
-            <h4 className="text-lg font-semibold text-muted-foreground mb-2">ToastProps</h4>
+            <h4 className="text-lg font-semibold text-muted-foreground mb-2">Toast Props</h4>
             <div className="rounded-md  overflow-x-auto">
               <SyntaxHighlighter code={apiContent} />
             </div>
