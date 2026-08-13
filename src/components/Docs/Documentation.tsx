@@ -149,7 +149,7 @@ const Documentation = () => {
             <li>addToast still accepts message and autoClose.</li>
             <li>toast.error maps to the danger variant.</li>
             <li>Ids are strings (kalki-toast-1), not numbers.</li>
-            <li>Close button, icons, and progress are on by default.</li>
+            <li>Close button and icons are on by default.</li>
           </ul>
         </div>
       </Tab>

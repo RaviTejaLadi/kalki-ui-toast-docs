@@ -36,12 +36,11 @@ const ControlExample = () => {
             toast.secondary('Minimal toast', {
               icon: false,
               showClose: false,
-              showProgress: false,
               duration: 3000,
             })
           }
         >
-          No icon, close, or bar
+          No icon or close
         </Button>
         <Button block variant="outline" size="xs" onClick={() => toast.dismiss()}>
           Dismiss all

@@ -29,8 +29,8 @@ const VariantsExample = () => {
     <div className="mx-auto w-full">
       <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground">Variants</h3>
       <p className="mb-4 text-sm text-muted-foreground">
-        Ten built-in looks. <code className="text-xs">toast.error()</code> maps to{' '}
-        <code className="text-xs">danger</code>.
+        Ten built-in types. The card stays the same; the icon carries the color.{' '}
+        <code className="text-xs">toast.error()</code> maps to <code className="text-xs">danger</code>.
       </p>
 
       <div className="flex flex-col gap-6">

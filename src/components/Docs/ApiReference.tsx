@@ -73,7 +73,7 @@ const toastMethods: PropRow[] = [
   {
     name: 'toast.loading',
     type: '(message, options?) => string',
-    description: 'Sticky toast with a spinner. duration defaults to false and the progress bar is hidden.',
+    description: 'Sticky toast with a spinner. duration defaults to false.',
   },
   {
     name: 'toast.promise',
@@ -114,7 +114,8 @@ const toastOptions: PropRow[] = [
     name: 'variant',
     type: 'ToastVariant',
     default: "'default'",
-    description: 'default | primary | secondary | success | info | warning | danger | help | light | dark',
+    description:
+      'default | primary | secondary | success | info | warning | danger | help | light | dark. Color is applied to the icon; the card stays neutral.',
   },
   {
     name: 'duration',
@@ -152,14 +153,14 @@ const toastOptions: PropRow[] = [
   {
     name: 'showProgress',
     type: 'boolean',
-    default: 'true',
-    description: 'Show the remaining-time bar when duration is a number.',
+    default: 'false',
+    description: 'Show a remaining-time bar when duration is a number. Off by default.',
   },
   {
     name: 'rounded',
     type: 'boolean',
     default: 'true',
-    description: 'Larger corner radius on this toast.',
+    description: '8px corner radius on this toast.',
   },
   {
     name: 'id',
@@ -217,7 +218,7 @@ const toasterProps: PropRow[] = [
   {
     name: 'gap',
     type: 'number',
-    default: '12',
+    default: '14',
     description: 'Space between stacked toasts, in pixels.',
   },
   {
@@ -241,7 +242,7 @@ const toasterProps: PropRow[] = [
   {
     name: 'showProgress',
     type: 'boolean',
-    default: 'true',
+    default: 'false',
     description: 'Show the remaining-time bar unless a toast overrides it.',
   },
   {
@@ -260,7 +261,7 @@ const toasterProps: PropRow[] = [
     name: 'rounded',
     type: 'boolean',
     default: 'true',
-    description: 'Larger corner radius on every toast.',
+    description: '8px corner radius on every toast.',
   },
   {
     name: 'label',
@@ -309,17 +310,16 @@ const hookRows: PropRow[] = [
 ];
 
 const cssVars: PropRow[] = [
-  { name: '--kut-width', type: 'length', default: '364px', description: 'Toast card width.' },
-  { name: '--kut-radius', type: 'length', default: '14px', description: 'Corner radius when rounded is true.' },
+  { name: '--kut-width', type: 'length', default: '356px', description: 'Toast card width.' },
+  { name: '--kut-radius', type: 'length', default: '8px', description: 'Corner radius when rounded is true.' },
   { name: '--kut-offset', type: 'length', default: '16px', description: 'Viewport inset from the screen edge.' },
-  { name: '--kut-gap', type: 'length', default: '12px', description: 'Gap between stacked toasts.' },
-  { name: '--kut-bg', type: 'color', description: 'Card background.' },
+  { name: '--kut-gap', type: 'length', default: '14px', description: 'Gap between stacked toasts.' },
+  { name: '--kut-bg', type: 'color', description: 'Card background. Neutral for every variant.' },
   { name: '--kut-fg', type: 'color', description: 'Title and action text.' },
   { name: '--kut-muted', type: 'color', description: 'Description and close icon.' },
   { name: '--kut-border', type: 'color', description: 'Card border.' },
   { name: '--kut-shadow', type: 'shadow', description: 'Card shadow.' },
-  { name: '--kut-accent', type: 'color', description: 'Accent bar, icon, progress, and primary action.' },
-  { name: '--kut-accent-soft', type: 'color', description: 'Icon chip and progress track.' },
+  { name: '--kut-accent', type: 'color', description: 'Icon color for the active variant.' },
   { name: '--kut-font', type: 'font', default: 'inherit', description: 'Font family for toast text.' },
 ];
 
@@ -422,10 +422,9 @@ toast.dismiss();`}
   duration={5000}
   visibleToasts={5}
   offset={16}
-  gap={12}
+  gap={14}
   showClose
   showIcon
-  showProgress
   pauseOnHover
   pauseOnFocusLoss
 />`}
@@ -460,11 +459,11 @@ addToast({
         <SyntaxHighlighter
           code={`.kalki-ui-toast {
   --kut-bg: #fff;
-  --kut-fg: #18181b;
-  --kut-muted: #71717a;
-  --kut-accent: #059669;
-  --kut-radius: 14px;
-  --kut-width: 364px;
+  --kut-fg: #171717;
+  --kut-muted: #737373;
+  --kut-accent: #16a34a;
+  --kut-radius: 8px;
+  --kut-width: 356px;
 }`}
           language="css"
         />
@@ -475,9 +474,9 @@ addToast({
         <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
           <li>role=&quot;status&quot; for most variants, role=&quot;alert&quot; for warning and danger.</li>
           <li>The viewport is a polite live region labelled &quot;Notifications&quot; (override with label).</li>
-          <li>Hover pauses the timer and the progress bar. Window blur does the same when pauseOnFocusLoss is true.</li>
+          <li>Hover pauses the timer. Window blur does the same when pauseOnFocusLoss is true.</li>
           <li>Swipe horizontally to dismiss. Close and action buttons are keyboard-focusable.</li>
-          <li>prefers-reduced-motion disables enter, exit, and progress animations.</li>
+          <li>prefers-reduced-motion disables enter, exit, and loader animations.</li>
           <li>Newest toasts sit closest to the chosen edge. visibleToasts (default 5) drops the oldest.</li>
         </ul>
       </Section>

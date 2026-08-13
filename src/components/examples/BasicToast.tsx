@@ -6,7 +6,7 @@ const BasicToast = () => {
     <div>
       <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground">Basic toasts</h3>
       <p className="mb-4 text-sm text-muted-foreground">
-        Call a variant helper. Default icons and a progress bar are included.
+        Call a variant helper. The card stays neutral — status is shown by the icon.
       </p>
       <div className="space-y-3">
         <Button onClick={() => toast.success('Changes saved')} block variant="success" size="xs">

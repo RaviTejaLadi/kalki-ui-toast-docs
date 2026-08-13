@@ -55,7 +55,6 @@ const PromiseExample = () => {
                 title: 'Upload complete',
                 description: 'avatar.png is ready.',
                 duration: 4000,
-                showProgress: true,
               });
             }, 2000);
           }}
