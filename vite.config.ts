@@ -10,7 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       'kalki-ui-toast-docs': 'kalki-ui-toast-docs',
     },
-    dedupe: ['react', 'react-dom'],
+    dedupe: ['react', 'react-dom', 'kalki-ui'],
   },
   server: {
     port: 3030,

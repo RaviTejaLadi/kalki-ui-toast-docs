@@ -1,6 +1,6 @@
 import { ArrowRight, BookOpen, ShoppingCart } from 'lucide-react';
+import { Badge, Button } from 'kalki-ui';
 import { useToast } from '../common/toast/ToastContext';
-import Button from '../common/Button';
 import { FloatingShapes } from './FloatingShapes';
 import { ReactLogo, TailwindLogo, TypeScriptLogo } from './Logos';
 import { TextReveal } from './animations/TextReveal';
@@ -37,9 +37,14 @@ const HeroSection = () => {
           </TextReveal>
 
           <TextReveal delay={200}>
-            <span className="inline-flex rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
+            <Badge
+              variant="outline"
+              size="sm"
+              pill
+              className="border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur"
+            >
               Lightweight · Accessible · Customizable
-            </span>
+            </Badge>
           </TextReveal>
 
           <TextReveal delay={350}>

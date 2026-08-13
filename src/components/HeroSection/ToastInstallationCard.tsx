@@ -1,3 +1,4 @@
+import { Card } from 'kalki-ui';
 import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
 
 const ToastInstallationCard = () => {
@@ -47,7 +48,10 @@ const ToastInstallationCard = () => {
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {steps.map((step) => (
-          <div key={step.n} className="docs-card flex flex-col rounded-xl p-6 transition-shadow hover:shadow-sm">
+          <Card
+            key={step.n}
+            className="docs-card flex h-full flex-col rounded-xl p-6 transition-shadow hover:shadow-sm"
+          >
             <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-md border border-border bg-muted/60 text-sm font-semibold text-foreground">
               {step.n}
             </div>
@@ -56,7 +60,7 @@ const ToastInstallationCard = () => {
             <div className="mt-auto w-full">
               <SyntaxHighlighter code={step.code} language={step.language} showCopyButton={false} />
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </section>

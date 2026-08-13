@@ -1,3 +1,4 @@
+import { Card } from 'kalki-ui';
 import TopBar from './components/layout/TopBar/TopBar';
 import Footer from './components/layout/Footer/Footer';
 import HeroSection from './components/HeroSection/HeroSection';
@@ -28,15 +29,15 @@ function App() {
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+            <Card className="docs-card h-full rounded-xl p-6 transition-shadow hover:shadow-sm">
               <BasicToast />
-            </div>
-            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+            </Card>
+            <Card className="docs-card h-full rounded-xl p-6 transition-shadow hover:shadow-sm">
               <CustomStyling />
-            </div>
-            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+            </Card>
+            <Card className="docs-card h-full rounded-xl p-6 transition-shadow hover:shadow-sm">
               <AdvancedFeatures />
-            </div>
+            </Card>
           </div>
         </section>
 
@@ -50,21 +51,21 @@ function App() {
               </p>
             </div>
             <div className="grid gap-4 lg:grid-cols-2">
-              <div className="docs-card rounded-xl p-6 sm:p-8">
+              <Card className="docs-card rounded-xl p-6 sm:p-8">
                 <PositionsExample />
-              </div>
-              <div className="docs-card rounded-xl p-6 sm:p-8">
+              </Card>
+              <Card className="docs-card rounded-xl p-6 sm:p-8">
                 <VariantsExample />
-              </div>
+              </Card>
             </div>
           </div>
         </section>
 
         <section className="container py-16 sm:py-20">
           <div className="mx-auto max-w-xl">
-            <div className="docs-card rounded-xl p-6 sm:p-8">
+            <Card className="docs-card rounded-xl p-6 sm:p-8">
               <ToastBomb />
-            </div>
+            </Card>
           </div>
         </section>
 

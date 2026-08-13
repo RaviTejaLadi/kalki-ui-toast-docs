@@ -1,5 +1,5 @@
+import { Button } from 'kalki-ui';
 import { ToastVariant, useToast } from '../common/toast';
-import Button from '../common/Button';
 
 const variants: { label: string; value: ToastVariant; message: string }[] = [
   { label: 'Default', value: 'default', message: 'Just a simple toast! 😊' },
@@ -35,7 +35,7 @@ const ToastBomb = () => {
       <p className="mb-6 text-sm text-muted-foreground">
         Click the button below to trigger all toast variants simultaneously.
       </p>
-      <Button onClick={handleToastBomb} variant="primary" size={'xs'}>
+      <Button onClick={handleToastBomb} variant="primary" size="xs">
         Trigger Toast Bomb 💣
       </Button>
     </div>

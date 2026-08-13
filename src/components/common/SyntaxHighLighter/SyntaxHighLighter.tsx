@@ -10,7 +10,7 @@ import { useTheme } from '@/components/context/ThemeContext';
 import { indentUnit } from '@codemirror/language';
 import { EditorState } from '@codemirror/state';
 import { cn } from '@/lib/utils';
-import Button from '@/components/common/Button';
+import { Button } from 'kalki-ui';
 
 interface SyntaxHighlighterProps {
   code: string;

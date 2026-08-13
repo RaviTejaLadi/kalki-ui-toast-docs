@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import 'kalki-ui/styles.css';
 import './index.css';
 import { ToastProvider, ToastContainer } from '@/components/common/toast/index';
 import { ThemeProvider } from './components/context/ThemeContext.js';

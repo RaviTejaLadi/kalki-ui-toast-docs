@@ -1,5 +1,5 @@
-import Button from '../common/Button';
 import { AlertCircle, Check, MessageSquare, X } from 'lucide-react';
+import { Button } from 'kalki-ui';
 import { useToast } from '../common/toast';
 
 const BasicToast = () => {
@@ -18,10 +18,10 @@ const BasicToast = () => {
     <div>
       <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Basic Toasts</h3>
       <div className="space-y-3">
-        <Button onClick={() => showExampleToast('success')} className="w-full" variant="success" size={'xs'}>
+        <Button onClick={() => showExampleToast('success')} block variant="success" size="xs">
           <Check className="w-4 h-4 mr-2" /> Success
         </Button>
-        <Button onClick={() => showExampleToast('danger')} className="w-full" variant="danger" size={'xs'}>
+        <Button onClick={() => showExampleToast('danger')} block variant="danger" size="xs">
           <X className="w-4 h-4 mr-2" /> Error
         </Button>
         <Button
@@ -32,9 +32,9 @@ const BasicToast = () => {
               icon: <AlertCircle className="w-5 h-5" />,
             })
           }
-          className="w-full"
+          block
           variant="warning"
-          size={'xs'}
+          size="xs"
         >
           <AlertCircle className="w-4 h-4 mr-2" /> Warning
         </Button>

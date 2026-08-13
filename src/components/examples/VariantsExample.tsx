@@ -1,6 +1,6 @@
 import { ToastVariant, useToast } from '../common/toast';
 import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
-import Button, { ButtonText, ButtonIcon } from '../common/Button';
+import { Button, ButtonIcon, ButtonText } from 'kalki-ui';
 
 import { Circle, CircleDot, Info, CheckCircle, AlertTriangle, XCircle, HelpCircle, Sun, Moon } from 'lucide-react';
 
@@ -41,7 +41,7 @@ const VariantsExample = () => {
               key={value}
               onClick={() => handleVariantToast(value)}
               variant={value === 'default' ? 'outline' : value}
-              size={'xs'}
+              size="xs"
             >
               <ButtonIcon className="mr-2">{icon}</ButtonIcon>
               <ButtonText>{label}</ButtonText>

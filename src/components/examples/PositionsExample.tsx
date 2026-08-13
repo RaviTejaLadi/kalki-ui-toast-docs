@@ -2,7 +2,7 @@ import { useToastStore } from '@/store/useToastPositionStore';
 import { ToastPosition, useToast } from '../common/toast';
 import { ShoppingCart } from 'lucide-react';
 import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
-import Button, { ButtonIcon, ButtonText } from '../common/Button';
+import { Button, ButtonIcon, ButtonText } from 'kalki-ui';
 
 const positions: { label: string; value: ToastPosition; icon: string }[] = [
   { label: 'Top Left', value: 'top-left', icon: '↖️' },
@@ -38,7 +38,7 @@ const PositionsExample = () => {
               key={value}
               onClick={() => positionsToast(value)}
               variant={position === value ? 'primary' : 'outline'}
-              size={'xs'}
+              size="xs"
             >
               <ButtonIcon className="mr-2">{icon}</ButtonIcon>
               <ButtonText>{label}</ButtonText>

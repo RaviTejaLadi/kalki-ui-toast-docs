@@ -1,6 +1,6 @@
 import React from 'react';
 import { Moon, Sun } from 'lucide-react';
-import Button from '@/components/common/Button';
+import { Button } from 'kalki-ui';
 import { useTheme } from '@/components/context/ThemeContext';
 
 export const ThemeToggle: React.FC = () => {

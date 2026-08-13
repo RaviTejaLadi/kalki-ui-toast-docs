@@ -1,5 +1,5 @@
-import Button from '../common/Button';
 import { Check, Loader2, ShoppingCart, Timer, X } from 'lucide-react';
+import { Button } from 'kalki-ui';
 import { useToast } from '../common/toast';
 
 const AdvancedFeatures = () => {
@@ -47,14 +47,14 @@ const AdvancedFeatures = () => {
     <div>
       <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Advanced Features</h3>
       <div className="space-y-3">
-        <Button className="w-full" variant="outline" size={'xs'} onClick={showPromiseToast}>
+        <Button block variant="outline" size="xs" onClick={showPromiseToast}>
           <Timer className="w-4 h-4 mr-2" /> Promise Toast
         </Button>
-        <Button className="w-full" variant="outline" onClick={showMultilineToast} size={'xs'}>
+        <Button block variant="outline" onClick={showMultilineToast} size="xs">
           <ShoppingCart className="w-4 h-4 mr-2" /> Multiline
         </Button>
         <Button
-          className="w-full"
+          block
           variant="outline"
           onClick={() =>
             addToast({
@@ -63,7 +63,7 @@ const AdvancedFeatures = () => {
               icon: <Timer className="w-5 h-5" />,
             })
           }
-          size={'xs'}
+          size="xs"
         >
           <Timer className="w-4 h-4 mr-2" /> Custom Duration
         </Button>

@@ -1,7 +1,7 @@
 import { Github } from 'lucide-react';
 import Logo from './Logo';
 import { ThemeToggle } from './ThemeToggle';
-import Button from '@/components/common/Button';
+import { Button } from 'kalki-ui';
 
 const GITHUB_URL = 'https://github.com/RaviTejaLadi/kalki-ui-toast';
 
