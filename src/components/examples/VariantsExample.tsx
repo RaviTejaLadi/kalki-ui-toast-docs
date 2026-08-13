@@ -25,14 +25,14 @@ const VariantsExample = () => {
       message: `This is a ${variant} toast!`,
       variant,
       autoClose: 3000,
-      showClose:false,
+      showClose: false,
       icon: variants.find((v) => v.value === variant)?.icon,
     });
   };
 
   return (
-    <div className="w-full mx-auto ">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Explore Toast Variants</h3>
+    <div className="mx-auto w-full">
+      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Explore Toast Variants</h3>
 
       <div className="flex flex-col  gap-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">

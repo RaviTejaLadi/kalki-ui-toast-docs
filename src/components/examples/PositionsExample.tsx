@@ -28,8 +28,8 @@ const PositionsExample = () => {
   };
 
   return (
-    <div className="w-full mx-auto ">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Customize Toast Position</h3>
+    <div className="mx-auto w-full">
+      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Customize Toast Position</h3>
 
       <div className="flex flex-col gap-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">

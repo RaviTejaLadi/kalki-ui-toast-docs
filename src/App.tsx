@@ -12,70 +12,78 @@ import ToastInstallationCard from './components/HeroSection/ToastInstallationCar
 
 function App() {
   return (
-    <div className="min-h-screen text-foreground">
-      {/* Sticky Header */}
+    <div className="min-h-screen bg-background text-foreground">
       <TopBar />
 
-      <main className="relative">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
-          <HeroSection />
-          <ToastInstallationCard />
-        </section>
+      <main className="relative min-w-0 pt-14">
+        <HeroSection />
+        <ToastInstallationCard />
 
-        {/* Interactive Examples Section */}
-        <section id="examples" className="py-20 ">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-16">Interactive Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="p-6  rounded-md border dark:border-gray-200/10 transition-shadow duration-300">
-                <BasicToast />
-              </div>
-              <div className="p-6 rounded-md border dark:border-gray-200/10 transition-shadow duration-300">
-                <CustomStyling />
-              </div>
-              <div className="p-6 rounded-md border dark:border-gray-200/10  transition-shadow duration-300">
-                <AdvancedFeatures />
-              </div>
+        <section id="examples" className="container scroll-mt-14 py-16 sm:py-20">
+          <div className="mb-12 max-w-2xl">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Playground</p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">Interactive examples</h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              Trigger notifications, customize appearance, and try advanced patterns without leaving the page.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+              <BasicToast />
+            </div>
+            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+              <CustomStyling />
+            </div>
+            <div className="docs-card rounded-xl p-6 transition-shadow hover:shadow-sm">
+              <AdvancedFeatures />
             </div>
           </div>
         </section>
 
-        {/* Examples Grid Section */}
-        <section className="py-16 ">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              <div className="p-8 rounded-md border dark:border-gray-200/10">
+        <section className="border-t border-border/60 bg-muted/30">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Customize</p>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">Positions and variants</h2>
+              <p className="mt-3 text-base text-muted-foreground">
+                Place toasts anywhere on the screen and preview every built-in visual style.
+              </p>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="docs-card rounded-xl p-6 sm:p-8">
                 <PositionsExample />
               </div>
-              <div className="p-8 rounded-md border dark:border-gray-200/10 ">
+              <div className="docs-card rounded-xl p-6 sm:p-8">
                 <VariantsExample />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Toast Bomb Demo Section */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 flex justify-center">
-            <div className="p-8 max-w-xl w-full rounded-md border dark:border-gray-200/10">
+        <section className="container py-16 sm:py-20">
+          <div className="mx-auto max-w-xl">
+            <div className="docs-card rounded-xl p-6 sm:p-8">
               <ToastBomb />
             </div>
           </div>
         </section>
 
-        {/* Documentation Section */}
-        <section id="docs" className="py-24 ">
-          <div className="container mx-auto px-4">
-            <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto">
+        <section id="docs" className="scroll-mt-14 border-t border-border/60 bg-muted/30">
+          <div className="container py-16 sm:py-20">
+            <div className="mb-10 max-w-2xl">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Documentation</p>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground">Get started in minutes</h2>
+              <p className="mt-3 text-base text-muted-foreground">
+                Install the package, wrap your app, and start showing toasts from anywhere.
+              </p>
+            </div>
+            <div className="mx-auto max-w-4xl">
               <Documentation />
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

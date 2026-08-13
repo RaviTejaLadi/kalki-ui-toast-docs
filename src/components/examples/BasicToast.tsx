@@ -15,8 +15,8 @@ const BasicToast = () => {
     });
   };
   return (
-    <div className=" rounded-lg  p-6  transition-shadow">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Basic Toasts</h3>
+    <div>
+      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Basic Toasts</h3>
       <div className="space-y-3">
         <Button onClick={() => showExampleToast('success')} className="w-full" variant="success" size={'xs'}>
           <Check className="w-4 h-4 mr-2" /> Success

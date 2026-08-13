@@ -27,87 +27,34 @@ interface TabsProps {
 }
 
 const tabButtonStyles = cva(
-  'relative flex items-center justify-center rounded-md transition-all duration-300 ease-in-out mr-2 font-medium hover:shadow-sm group',
+  'relative mr-1 flex items-center justify-center rounded-md font-medium transition-colors duration-150 ease-in-out group',
   {
     variants: {
       variant: {
-        primary:
-          'bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 dark:bg-blue-900 dark:text-blue-100 dark:border-blue-800 dark:hover:bg-blue-800',
-        secondary:
-          'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:hover:bg-gray-700',
-        success:
-          'bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 dark:bg-green-900 dark:text-green-100 dark:border-green-800 dark:hover:bg-green-800',
-        danger:
-          'bg-red-50 text-red-800 hover:bg-red-100 border border-red-200 dark:bg-red-900 dark:text-red-100 dark:border-red-800 dark:hover:bg-red-800',
-        warning:
-          'bg-yellow-50 text-yellow-800 hover:bg-yellow-100 border border-yellow-200 dark:bg-yellow-900 dark:text-yellow-100 dark:border-yellow-800 dark:hover:bg-yellow-800',
-        help: 'bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200 dark:bg-purple-900 dark:text-purple-100 dark:border-purple-800 dark:hover:bg-purple-800',
-        info: 'bg-cyan-50 text-cyan-800 hover:bg-cyan-100 border border-cyan-200 dark:bg-cyan-900 dark:text-cyan-100 dark:border-cyan-800 dark:hover:bg-cyan-800',
-        dark: 'bg-gray-800 text-white hover:bg-gray-700 border border-gray-900 dark:bg-black dark:border-gray-700 dark:hover:bg-gray-900',
-        light:
-          'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 dark:hover:bg-gray-800',
+        primary: 'text-muted-foreground hover:bg-muted hover:text-foreground',
+        secondary: 'text-muted-foreground hover:bg-background/80 hover:text-foreground',
+        success: 'text-success hover:bg-success/10',
+        danger: 'text-danger hover:bg-danger/10',
+        warning: 'text-warning hover:bg-warning/10',
+        help: 'text-help hover:bg-help/10',
+        info: 'text-info hover:bg-info/10',
+        dark: 'text-muted-foreground hover:bg-muted hover:text-foreground',
+        light: 'text-muted-foreground hover:bg-muted hover:text-foreground',
       },
       size: {
-        sm: 'text-xs px-3 py-1.5 space-x-2',
-        md: 'text-sm px-3.5 py-2 space-x-3',
-        lg: 'text-base px-4 py-2.5 space-x-4',
+        sm: 'space-x-2 px-3 py-1.5 text-xs',
+        md: 'space-x-3 px-3.5 py-2 text-sm',
+        lg: 'space-x-4 px-4 py-2.5 text-sm',
       },
       active: {
-        true: 'font-semibold rounded-md ring-[0.5px] ring-opacity-50',
-        false: 'font-normal',
+        true: 'bg-background font-semibold text-foreground shadow-sm',
+        false: 'font-medium',
       },
       disabled: {
-        true: 'opacity-40 cursor-not-allowed pointer-events-none',
+        true: 'pointer-events-none cursor-not-allowed opacity-40',
         false: '',
       },
     },
-    compoundVariants: [
-      {
-        variant: 'primary',
-        active: true,
-        class: 'ring-blue-300 bg-blue-100 dark:ring-blue-600 dark:bg-blue-800',
-      },
-      {
-        variant: 'secondary',
-        active: true,
-        class: 'ring-gray-300 bg-gray-100 dark:ring-gray-600 dark:bg-gray-700',
-      },
-      {
-        variant: 'success',
-        active: true,
-        class: 'ring-green-300 bg-green-100 dark:ring-green-600 dark:bg-green-800',
-      },
-      {
-        variant: 'danger',
-        active: true,
-        class: 'ring-red-300 bg-red-100 dark:ring-red-600 dark:bg-red-800',
-      },
-      {
-        variant: 'warning',
-        active: true,
-        class: 'ring-yellow-300 bg-yellow-100 dark:ring-yellow-600 dark:bg-yellow-800',
-      },
-      {
-        variant: 'help',
-        active: true,
-        class: 'ring-purple-300 bg-purple-100 dark:ring-purple-600 dark:bg-purple-800',
-      },
-      {
-        variant: 'info',
-        active: true,
-        class: 'ring-cyan-300 bg-cyan-100 dark:ring-cyan-600 dark:bg-cyan-800',
-      },
-      {
-        variant: 'dark',
-        active: true,
-        class: 'ring-gray-600 bg-gray-700 dark:ring-gray-500 dark:bg-gray-800',
-      },
-      {
-        variant: 'light',
-        active: true,
-        class: 'ring-gray-300 bg-gray-200 dark:ring-gray-600 dark:bg-gray-700',
-      },
-    ],
     defaultVariants: {
       variant: 'primary',
       size: 'sm',
@@ -190,15 +137,13 @@ export const Tabs: React.FC<TabsProps> = ({
   );
 
   return (
-    <Box padding="5" rounded className={cn(className)} style={style}>
+    <Box padding="0" rounded className={cn('docs-card rounded-xl p-4 sm:p-5', className)} style={style}>
       <div
         ref={tabsRef}
         role="tablist"
         aria-orientation="horizontal"
-        className={cn(
-          'flex mb-2 p-1 items-center bg-inherit border rounded-md overflow-x-auto dark:bg-gray-800 dark:border-gray-700',
-          headerStyles
-        )}
+        className="mb-3 flex items-center overflow-x-auto rounded-md border border-border bg-muted/50 p-1"
+        style={headerStyles}
         onKeyDown={handleKeyNavigation}
       >
         {React.Children.map(children, (child: React.ReactNode) => {
@@ -236,10 +181,8 @@ export const Tabs: React.FC<TabsProps> = ({
         })}
       </div>
       <div
-        className={cn(
-          'bg-background border flex items-center rounded-md overflow-y-auto dark:bg-inherit dark:border-gray-200/10',
-          bodyStyles
-        )}
+        className="flex items-center overflow-y-auto rounded-md border border-border/80 bg-background"
+        style={bodyStyles}
       >
         {React.Children.toArray(children).map((child) => {
           if (!isTabElement(child)) return null;

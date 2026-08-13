@@ -30,9 +30,11 @@ const ToastBomb = () => {
   };
 
   return (
-    <div className="w-full  mx-auto p-6  ">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Toast Bomb 💣</h3>
-      <p className="text-muted-foreground mb-6">Click the button below to trigger all toast variants simultaneously!</p>
+    <div className="mx-auto w-full">
+      <h3 className="mb-2 text-base font-semibold tracking-tight text-foreground">Toast Bomb</h3>
+      <p className="mb-6 text-sm text-muted-foreground">
+        Click the button below to trigger all toast variants simultaneously.
+      </p>
       <Button onClick={handleToastBomb} variant="primary" size={'xs'}>
         Trigger Toast Bomb 💣
       </Button>

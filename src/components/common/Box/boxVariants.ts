@@ -22,7 +22,7 @@ export const boxVariants = cva('block', {
       false: '',
     },
     outlined: {
-      true: 'border border-gray-300',
+      true: 'border border-border',
       false: '',
     },
     flexDirection: {

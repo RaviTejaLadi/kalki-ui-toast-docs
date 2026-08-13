@@ -4,6 +4,7 @@ import type { ButtonProps, ButtonIconProps, ButtonTextProps } from './types';
 import { ButtonIcon } from './ButtonIcon';
 import { ButtonText } from './ButtonText';
 import { Loader } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 /**
  * A customizable button component.
@@ -42,13 +43,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const buttonClasses = buttonVariants({
-      variant,
-      size,
-      raised,
-      rounded,
-      className,
-    });
+    const buttonClasses = cn(
+      buttonVariants({
+        variant,
+        size,
+        raised,
+        rounded,
+      }),
+      className
+    );
 
     return (
       <button

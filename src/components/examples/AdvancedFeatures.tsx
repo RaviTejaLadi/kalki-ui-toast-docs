@@ -44,8 +44,8 @@ const AdvancedFeatures = () => {
   };
 
   return (
-    <div className="rounded-lg  p-6  transition-shadow">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Advanced Features</h3>
+    <div>
+      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Advanced Features</h3>
       <div className="space-y-3">
         <Button className="w-full" variant="outline" size={'xs'} onClick={showPromiseToast}>
           <Timer className="w-4 h-4 mr-2" /> Promise Toast

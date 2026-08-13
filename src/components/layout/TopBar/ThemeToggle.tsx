@@ -5,14 +5,18 @@ import { useTheme } from '@/components/context/ThemeContext';
 
 export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <Button variant="ghost" onClick={toggleTheme} aria-label="Toggle theme">
-      {theme === 'light' ? (
-        <Moon className="size-4 text-gray-800 dark:text-gray-200" />
-      ) : (
-        <Sun className="size-4 text-gray-800 dark:text-gray-200" />
-      )}
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={toggleTheme}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-pressed={isDark}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {isDark ? <Sun className="h-5 w-5 text-foreground" /> : <Moon className="h-5 w-5 text-foreground" />}
     </Button>
   );
 };

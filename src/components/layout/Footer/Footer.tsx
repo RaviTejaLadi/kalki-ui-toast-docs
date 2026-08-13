@@ -1,23 +1,44 @@
+import Logo from '../TopBar/Logo';
+
+const GITHUB_URL = 'https://github.com/RaviTejaLadi/kalki-ui-toast';
+
 const Footer = () => {
   return (
-    <footer className="py-4">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-wrap items-center gap-6 justify-center">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-              GitHub
-            </a>
-          </div>
-          <div className="text-sm text-muted-foreground flex items-center gap-2">
-            Built with ❤️{' '}
-            <div className="flex flex-col">
-              <span className="text-md my-0 font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Kalki UI Toast
-              </span>
-              <span className="text-[.5rem] font-medium -mt-2 text-gray-500 tracking-wider">PREMIUM</span>
-            </div>
-          </div>
-        </div>
+    <footer className="border-t border-border/70 bg-card/40">
+      <div className="container flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <a href="/" className="inline-flex items-center" aria-label="Kalki UI Toast">
+          <Logo />
+        </a>
+
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+          <a href="#examples" className="transition-colors hover:text-foreground">
+            Examples
+          </a>
+          <a href="#docs" className="transition-colors hover:text-foreground">
+            Docs
+          </a>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-foreground"
+          >
+            GitHub
+          </a>
+        </nav>
+
+        <p className="text-xs text-muted-foreground">
+          Designed and developed by{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://ravitejaladi.vercel.app/"
+            className="font-medium text-foreground transition-colors hover:text-primary"
+            aria-label="Ravi Teja Ladi"
+          >
+            Ravi Teja Ladi
+          </a>
+        </p>
       </div>
     </footer>
   );

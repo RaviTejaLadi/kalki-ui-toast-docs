@@ -10,7 +10,7 @@ const Main = () => {
   const { position } = useToastStore();
 
   return (
-    <div className="bg-background dark:bg-background/90">
+    <div className="min-h-screen bg-background text-foreground">
       <ToastProvider>
         <App />
         <ToastContainer position={position} />

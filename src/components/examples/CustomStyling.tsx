@@ -5,8 +5,8 @@ import { useToast } from '../common/toast';
 const CustomStyling = () => {
   const { addToast } = useToast();
   return (
-    <div className=" rounded-lg  p-6 transition-shadow">
-      <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Custom Styling</h3>
+    <div>
+      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Custom Styling</h3>
       <div className="space-y-3">
         <Button
           className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white"

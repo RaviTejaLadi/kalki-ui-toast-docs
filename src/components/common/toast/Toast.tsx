@@ -5,20 +5,20 @@ import { ToastProps } from './types';
 import { cn } from '@/lib/utils';
 
 const toastVariants = cva(
-  'relative flex items-center mt-2 w-fit justify-between  transition-all duration-500 max-w-[calc(100vw-2rem)]',
+  'relative mt-2 flex w-fit max-w-[calc(100vw-2rem)] items-center justify-between rounded-md px-1 transition-all duration-500',
   {
     variants: {
       variant: {
-        default: 'bg-white text-gray-800 border border-gray-300 shadow-lg',
-        primary: 'bg-blue-50 text-blue-800 border border-blue-200',
-        secondary: 'bg-gray-50 text-gray-800 border border-gray-200',
-        success: 'bg-green-50 text-green-800 border border-green-200',
-        info: 'bg-cyan-50 text-cyan-800 border border-cyan-200',
-        warning: 'bg-yellow-50 text-yellow-800 border border-yellow-200',
-        danger: 'bg-red-50 text-red-800 border border-red-200',
-        help: 'bg-purple-50 text-purple-800 border border-purple-200',
-        light: 'bg-gray-50 text-gray-800 border border-gray-200',
-        dark: 'bg-gray-800 text-gray-100 border border-gray-700',
+        default: 'border border-border bg-card text-card-foreground shadow-lg',
+        primary: 'border border-primary/20 bg-primary/10 text-primary',
+        secondary: 'border border-border bg-muted text-foreground',
+        success: 'border border-success/20 bg-success/10 text-success',
+        info: 'border border-info/20 bg-info/10 text-info',
+        warning: 'border border-warning/20 bg-warning/10 text-warning',
+        danger: 'border border-danger/20 bg-danger/10 text-danger',
+        help: 'border border-help/20 bg-help/10 text-help',
+        light: 'border border-border bg-light text-light-foreground',
+        dark: 'border border-dark/40 bg-dark text-dark-foreground',
       },
       rounded: {
         true: 'rounded-lg',
