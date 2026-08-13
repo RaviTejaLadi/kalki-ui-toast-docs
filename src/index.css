@@ -185,10 +185,29 @@ html.dark {
   }
 
   .docs-card {
-    @apply border border-border/80 bg-card text-card-foreground shadow-none dark:bg-card;
+    @apply border border-border/70 bg-card text-card-foreground shadow-sm dark:bg-card;
   }
 
   .docs-link {
     @apply text-primary underline-offset-4 transition-colors hover:underline;
+  }
+
+  .section-muted {
+    @apply relative border-y border-border/60 bg-muted/40;
+  }
+
+  .section-muted::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+    opacity: 0.55;
+  }
+
+  html.dark .section-muted::before {
+    opacity: 0.28;
   }
 }

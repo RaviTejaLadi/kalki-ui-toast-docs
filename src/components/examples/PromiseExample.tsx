@@ -1,5 +1,7 @@
 import { toast } from 'kalki-ui-toast';
 import { Button } from 'kalki-ui';
+import { Loader } from 'lucide-react';
+import { ExampleCard } from '../ui/ExampleCard';
 
 const fakeSave = (shouldFail = false) =>
   new Promise<{ id: string }>((resolve, reject) => {
@@ -11,58 +13,56 @@ const fakeSave = (shouldFail = false) =>
 
 const PromiseExample = () => {
   return (
-    <div>
-      <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground">Promise and loading</h3>
-      <p className="mb-4 text-sm text-muted-foreground">One toast updates in place from loading to success or error.</p>
-      <div className="space-y-3">
-        <Button
-          block
-          variant="outline"
-          size="xs"
-          onClick={() =>
-            toast.promise(fakeSave(), {
-              loading: 'Saving profile…',
-              success: (data) => `Saved ${data.id}`,
-              error: 'Could not save profile',
-            })
-          }
-        >
-          Promise success
-        </Button>
-        <Button
-          block
-          variant="outline"
-          size="xs"
-          onClick={() =>
-            toast.promise(fakeSave(true), {
-              loading: 'Saving profile…',
-              success: 'Saved',
-              error: (err) => (err instanceof Error ? err.message : 'Unknown error'),
-            })
-          }
-        >
-          Promise error
-        </Button>
-        <Button
-          block
-          variant="outline"
-          size="xs"
-          onClick={() => {
-            const id = toast.loading('Uploading photo…');
-            setTimeout(() => {
-              toast.update(id, {
-                variant: 'success',
-                title: 'Upload complete',
-                description: 'avatar.png is ready.',
-                duration: 4000,
-              });
-            }, 2000);
-          }}
-        >
-          Loading → update
-        </Button>
-      </div>
-    </div>
+    <ExampleCard
+      icon={<Loader className="h-4 w-4" />}
+      accent="sky"
+      title="Promise and loading"
+      description="One toast updates in place from loading to success or error."
+    >
+      <Button
+        variant="outline"
+        size="xs"
+        onClick={() =>
+          toast.promise(fakeSave(), {
+            loading: 'Saving profile…',
+            success: (data) => `Saved ${data.id}`,
+            error: 'Could not save profile',
+          })
+        }
+      >
+        Promise success
+      </Button>
+      <Button
+        variant="outline"
+        size="xs"
+        onClick={() =>
+          toast.promise(fakeSave(true), {
+            loading: 'Saving profile…',
+            success: 'Saved',
+            error: (err) => (err instanceof Error ? err.message : 'Unknown error'),
+          })
+        }
+      >
+        Promise error
+      </Button>
+      <Button
+        variant="outline"
+        size="xs"
+        onClick={() => {
+          const id = toast.loading('Uploading photo…');
+          setTimeout(() => {
+            toast.update(id, {
+              variant: 'success',
+              title: 'Upload complete',
+              description: 'avatar.png is ready.',
+              duration: 4000,
+            });
+          }, 2000);
+        }}
+      >
+        Loading → update
+      </Button>
+    </ExampleCard>
   );
 };
 

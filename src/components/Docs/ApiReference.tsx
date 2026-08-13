@@ -1,6 +1,17 @@
 import { type ReactNode } from 'react';
 import { SyntaxHighlighter } from '@/components/SyntaxHighLighter';
 import { PropTable, type PropRow } from './PropTable';
+import { cn } from '@/lib/utils';
+
+const toc = [
+  { id: 'api-exports', label: 'Exports' },
+  { id: 'api-toast', label: 'toast()' },
+  { id: 'api-options', label: 'Options' },
+  { id: 'api-toaster', label: 'Toaster' },
+  { id: 'api-hook', label: 'useToast()' },
+  { id: 'api-theming', label: 'Theming' },
+  { id: 'api-a11y', label: 'Accessibility' },
+];
 
 function Section({
   id,
@@ -14,13 +25,40 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 space-y-4">
+    <section
+      id={id}
+      className="scroll-mt-24 space-y-5 overflow-hidden rounded-2xl border border-border/70 bg-card p-5 shadow-sm sm:p-8"
+    >
       <div>
         <h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
-        {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
+        {description && <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{description}</p>}
       </div>
       {children}
     </section>
+  );
+}
+
+function ApiToc() {
+  return (
+    <nav className="lg:sticky lg:top-20 lg:self-start">
+      <p className="mb-3 hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground lg:block">
+        On this page
+      </p>
+      <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-0 lg:overflow-visible lg:border-l lg:border-border/70 lg:pb-0">
+        {toc.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={cn(
+              'shrink-0 rounded-lg border border-border/70 bg-card px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground',
+              'lg:rounded-none lg:border-0 lg:border-l-2 lg:border-transparent lg:bg-transparent lg:-ml-px lg:px-3 lg:py-1.5 lg:hover:border-primary lg:hover:bg-transparent'
+            )}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -343,14 +381,16 @@ const exportsRows: PropRow[] = [
 
 const ApiReference = () => {
   return (
-    <div className="docs-card space-y-12 rounded-xl p-6 sm:p-8">
-      <Section
-        id="api-exports"
-        title="Package exports"
-        description="Import everything from kalki-ui-toast. Styles are bundled — no extra CSS import is required."
-      >
-        <SyntaxHighlighter
-          code={`import {
+    <div className="grid gap-6 lg:grid-cols-[200px_minmax(0,1fr)]">
+      <ApiToc />
+      <div className="min-w-0 space-y-6">
+        <Section
+          id="api-exports"
+          title="Package exports"
+          description="Import everything from kalki-ui-toast. Styles are bundled — no extra CSS import is required."
+        >
+          <SyntaxHighlighter
+            code={`import {
   toast,
   Toaster,
   ToastProvider,
@@ -371,18 +411,18 @@ import type {
   ToastContextValue,
   ToastPromiseMessages,
 } from "kalki-ui-toast";`}
-          language="tsx"
-        />
-        <PropTable nameHeader="Export" rows={exportsRows} />
-      </Section>
+            language="tsx"
+          />
+          <PropTable nameHeader="Export" rows={exportsRows} />
+        </Section>
 
-      <Section
-        id="api-toast"
-        title="toast()"
-        description="Call from event handlers, loaders, or non-React modules. Each helper returns the toast id."
-      >
-        <SyntaxHighlighter
-          code={`const id = toast.success("Saved");
+        <Section
+          id="api-toast"
+          title="toast()"
+          description="Call from event handlers, loaders, or non-React modules. Each helper returns the toast id."
+        >
+          <SyntaxHighlighter
+            code={`const id = toast.success("Saved");
 
 toast.error("Could not save", {
   description: "Please try again.",
@@ -397,26 +437,26 @@ toast.promise(save(), {
 toast.update(id, { title: "Still working…" });
 toast.dismiss(id);
 toast.dismiss();`}
-          language="tsx"
-        />
-        <PropTable nameHeader="Method" rows={toastMethods} />
-      </Section>
+            language="tsx"
+          />
+          <PropTable nameHeader="Method" rows={toastMethods} />
+        </Section>
 
-      <Section
-        id="api-options"
-        title="Toast options"
-        description="Accepted by toast(), toast.success(), addToast(), and toast.update()."
-      >
-        <PropTable rows={toastOptions} />
-      </Section>
+        <Section
+          id="api-options"
+          title="Toast options"
+          description="Accepted by toast(), toast.success(), addToast(), and toast.update()."
+        >
+          <PropTable rows={toastOptions} />
+        </Section>
 
-      <Section
-        id="api-toaster"
-        title="Toaster props"
-        description="Mount one Toaster. It portals into document.body and reads the shared queue."
-      >
-        <SyntaxHighlighter
-          code={`<Toaster
+        <Section
+          id="api-toaster"
+          title="Toaster props"
+          description="Mount one Toaster. It portals into document.body and reads the shared queue."
+        >
+          <SyntaxHighlighter
+            code={`<Toaster
   position="top-right"
   theme="system"
   duration={5000}
@@ -428,36 +468,36 @@ toast.dismiss();`}
   pauseOnHover
   pauseOnFocusLoss
 />`}
-          language="tsx"
-        />
-        <PropTable rows={toasterProps} />
-      </Section>
+            language="tsx"
+          />
+          <PropTable rows={toasterProps} />
+        </Section>
 
-      <Section
-        id="api-hook"
-        title="useToast()"
-        description="Optional React hook. Does not require ToastProvider. Toaster still needs to be mounted to render."
-      >
-        <SyntaxHighlighter
-          code={`const { toasts, addToast, dismiss, update } = useToast();
+        <Section
+          id="api-hook"
+          title="useToast()"
+          description="Optional React hook. Does not require ToastProvider. Toaster still needs to be mounted to render."
+        >
+          <SyntaxHighlighter
+            code={`const { toasts, addToast, dismiss, update } = useToast();
 
 addToast({
   message: "Saved",
   variant: "success",
   autoClose: 4000,
 });`}
-          language="tsx"
-        />
-        <PropTable nameHeader="Field" rows={hookRows} />
-      </Section>
+            language="tsx"
+          />
+          <PropTable nameHeader="Field" rows={hookRows} />
+        </Section>
 
-      <Section
-        id="api-theming"
-        title="Theming and CSS variables"
-        description="theme on Toaster switches light/dark. Override variables on .kalki-ui-toast for a custom palette."
-      >
-        <SyntaxHighlighter
-          code={`.kalki-ui-toast {
+        <Section
+          id="api-theming"
+          title="Theming and CSS variables"
+          description="theme on Toaster switches light/dark. Override variables on .kalki-ui-toast for a custom palette."
+        >
+          <SyntaxHighlighter
+            code={`.kalki-ui-toast {
   --kut-bg: #fff;
   --kut-fg: #171717;
   --kut-muted: #737373;
@@ -465,21 +505,40 @@ addToast({
   --kut-radius: 8px;
   --kut-width: 356px;
 }`}
-          language="css"
-        />
-        <PropTable nameHeader="Variable" rows={cssVars} />
-      </Section>
+            language="css"
+          />
+          <PropTable nameHeader="Variable" rows={cssVars} />
+        </Section>
 
-      <Section id="api-a11y" title="Behavior and accessibility" description="Built-in interaction and a11y defaults.">
-        <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-          <li>role=&quot;status&quot; for most variants, role=&quot;alert&quot; for warning and danger.</li>
-          <li>The viewport is a polite live region labelled &quot;Notifications&quot; (override with label).</li>
-          <li>Hover pauses the timer. Window blur does the same when pauseOnFocusLoss is true.</li>
-          <li>Swipe horizontally to dismiss. Close and action buttons are keyboard-focusable.</li>
-          <li>prefers-reduced-motion disables enter, exit, and loader animations.</li>
-          <li>Newest toasts sit closest to the chosen edge. visibleToasts (default 5) drops the oldest.</li>
-        </ul>
-      </Section>
+        <Section id="api-a11y" title="Behavior and accessibility" description="Built-in interaction and a11y defaults.">
+          <ul className="space-y-3 rounded-xl border border-border/70 bg-muted/30 p-4 text-sm leading-relaxed text-muted-foreground sm:p-5">
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              role=&quot;status&quot; for most variants, role=&quot;alert&quot; for warning and danger.
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              The viewport is a polite live region labelled &quot;Notifications&quot; (override with label).
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              Hover pauses the timer. Window blur does the same when pauseOnFocusLoss is true.
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              Swipe horizontally to dismiss. Close and action buttons are keyboard-focusable.
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              prefers-reduced-motion disables enter, exit, and loader animations.
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              Newest toasts sit closest to the chosen edge. visibleToasts (default 5) drops the oldest.
+            </li>
+          </ul>
+        </Section>
+      </div>
     </div>
   );
 };

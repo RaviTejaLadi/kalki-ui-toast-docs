@@ -14,6 +14,9 @@ const Footer = () => {
           <a href="#examples" className="transition-colors hover:text-foreground">
             Examples
           </a>
+          <a href="#customize" className="transition-colors hover:text-foreground">
+            Customize
+          </a>
           <a href="#docs" className="transition-colors hover:text-foreground">
             Docs
           </a>

@@ -1,5 +1,7 @@
-import { Tab, Tabs } from 'kalki-ui';
+import { useState, type ReactNode } from 'react';
+import { ArrowRightLeft, BookOpen, Code2, Package } from 'lucide-react';
 import { SyntaxHighlighter } from '@/components/SyntaxHighLighter';
+import { cn } from '@/lib/utils';
 
 const install = `npm install kalki-ui-toast
 # or
@@ -84,76 +86,133 @@ import { Toaster, toast } from "kalki-ui-toast";
 <Toaster position="top-right" />
 toast.success("Saved");`;
 
-const Documentation = () => {
+const tabs = [
+  { id: 'install', label: 'Install', icon: Package },
+  { id: 'usage', label: 'Usage', icon: BookOpen },
+  { id: 'hook', label: 'Hook', icon: Code2 },
+  { id: 'migration', label: 'Migration', icon: ArrowRightLeft },
+] as const;
+
+type TabId = (typeof tabs)[number]['id'];
+
+function DocBlock({ title, description, children }: { title: string; description: string; children: ReactNode }) {
   return (
-    <Tabs variant="secondary" size="sm" className="docs-card rounded-xl p-4 sm:p-5">
-      <Tab label="Install" value="install">
-        <div className="space-y-4 p-2">
-          <div>
-            <h3 className="mb-1 text-base font-semibold text-foreground">Installation</h3>
-            <p className="mb-3 text-sm text-muted-foreground">
-              React 18 or 19. Styles ship with the package and stay scoped under .kalki-ui-toast, so they will not
-              override your app CSS.
-            </p>
-            <SyntaxHighlighter code={install} language="js" />
-          </div>
-          <div>
-            <h3 className="mb-1 text-base font-semibold text-foreground">Mount Toaster once</h3>
-            <p className="mb-3 text-sm text-muted-foreground">
-              Place Toaster at the root. After that, toast() works from any file. No provider is required.
-            </p>
-            <SyntaxHighlighter code={setup} language="tsx" />
-          </div>
-        </div>
-      </Tab>
+    <div className="space-y-3">
+      <div>
+        <h3 className="text-base font-semibold tracking-tight text-foreground">{title}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
+      </div>
+      {children}
+    </div>
+  );
+}
 
-      <Tab label="Usage" value="usage">
-        <div className="space-y-4 p-2">
-          <div>
-            <h3 className="mb-1 text-base font-semibold text-foreground">Imperative API</h3>
-            <p className="mb-3 text-sm text-muted-foreground">
-              Helpers return an id you can pass to toast.update or toast.dismiss.
-            </p>
-            <SyntaxHighlighter code={usage} language="tsx" />
-          </div>
-          <div>
-            <h3 className="mb-1 text-base font-semibold text-foreground">Promises and updates</h3>
-            <p className="mb-3 text-sm text-muted-foreground">
-              toast.promise swaps loading → success/error on the same toast. toast.loading plus toast.update does the
-              same by hand.
-            </p>
-            <SyntaxHighlighter code={promise} language="tsx" />
-          </div>
-        </div>
-      </Tab>
+const Documentation = () => {
+  const [tab, setTab] = useState<TabId>('install');
 
-      <Tab label="Hook" value="hook">
-        <div className="space-y-4 p-2">
-          <h3 className="mb-1 text-base font-semibold text-foreground">useToast</h3>
-          <p className="mb-3 text-sm text-muted-foreground">
-            Use the hook when you want React state. addToast accepts the same options as toast(), including the older
-            message and autoClose fields.
-          </p>
-          <SyntaxHighlighter code={hook} language="tsx" />
+  return (
+    <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+      <nav className="flex gap-2 overflow-x-auto lg:sticky lg:top-20 lg:block lg:self-start lg:overflow-visible">
+        <p className="mb-3 hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground lg:block">
+          Guides
+        </p>
+        <div className="flex w-full gap-2 lg:flex-col">
+          {tabs.map(({ id, label, icon: Icon }) => {
+            const active = tab === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setTab(id)}
+                className={cn(
+                  'inline-flex shrink-0 items-center gap-2.5 rounded-xl border px-3.5 py-2.5 text-sm font-medium transition-all',
+                  active
+                    ? 'border-primary/30 bg-primary text-primary-foreground shadow-sm shadow-primary/20'
+                    : 'border-border/70 bg-card text-muted-foreground hover:border-primary/20 hover:text-foreground'
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </button>
+            );
+          })}
         </div>
-      </Tab>
+      </nav>
 
-      <Tab label="Migration" value="migration">
-        <div className="space-y-4 p-2">
-          <h3 className="mb-1 text-base font-semibold text-foreground">From Provider + Container</h3>
-          <p className="mb-3 text-sm text-muted-foreground">
-            ToastProvider and ToastContainer still work. New apps should mount Toaster and call toast().
-          </p>
-          <SyntaxHighlighter code={legacy} language="tsx" />
-          <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-            <li>addToast still accepts message and autoClose.</li>
-            <li>toast.error maps to the danger variant.</li>
-            <li>Ids are strings (kalki-toast-1), not numbers.</li>
-            <li>Close button and icons are on by default.</li>
-          </ul>
-        </div>
-      </Tab>
-    </Tabs>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card p-5 shadow-sm sm:p-8">
+        {tab === 'install' && (
+          <div className="space-y-8">
+            <DocBlock
+              title="Installation"
+              description="React 18 or 19. Styles ship with the package and stay scoped under .kalki-ui-toast, so they will not override your app CSS."
+            >
+              <SyntaxHighlighter code={install} language="js" />
+            </DocBlock>
+            <DocBlock
+              title="Mount Toaster once"
+              description="Place Toaster at the root. After that, toast() works from any file. No provider is required."
+            >
+              <SyntaxHighlighter code={setup} language="tsx" />
+            </DocBlock>
+          </div>
+        )}
+
+        {tab === 'usage' && (
+          <div className="space-y-8">
+            <DocBlock
+              title="Imperative API"
+              description="Helpers return an id you can pass to toast.update or toast.dismiss."
+            >
+              <SyntaxHighlighter code={usage} language="tsx" />
+            </DocBlock>
+            <DocBlock
+              title="Promises and updates"
+              description="toast.promise swaps loading → success/error on the same toast. toast.loading plus toast.update does the same by hand."
+            >
+              <SyntaxHighlighter code={promise} language="tsx" />
+            </DocBlock>
+          </div>
+        )}
+
+        {tab === 'hook' && (
+          <DocBlock
+            title="useToast"
+            description="Use the hook when you want React state. addToast accepts the same options as toast(), including the older message and autoClose fields."
+          >
+            <SyntaxHighlighter code={hook} language="tsx" />
+          </DocBlock>
+        )}
+
+        {tab === 'migration' && (
+          <div className="space-y-6">
+            <DocBlock
+              title="From Provider + Container"
+              description="ToastProvider and ToastContainer still work. New apps should mount Toaster and call toast()."
+            >
+              <SyntaxHighlighter code={legacy} language="tsx" />
+            </DocBlock>
+            <ul className="space-y-2.5 rounded-xl border border-border/70 bg-muted/30 p-4 text-sm text-muted-foreground">
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                addToast still accepts message and autoClose.
+              </li>
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                toast.error maps to the danger variant.
+              </li>
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Ids are strings (kalki-toast-1), not numbers.
+              </li>
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Close button and icons are on by default.
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

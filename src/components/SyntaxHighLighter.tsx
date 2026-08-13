@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { andromedaInit } from '@uiw/codemirror-theme-andromeda';
 import { githubLightInit } from '@uiw/codemirror-theme-github';
-import { Check, Clipboard, Loader2 } from 'lucide-react';
+import { Check, Clipboard } from 'lucide-react';
 import { javascript } from '@codemirror/lang-javascript';
 import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
@@ -28,7 +28,6 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
   ...rest
 }) => {
   const { theme } = useTheme();
-  const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
 
   const languageMap = {
@@ -78,11 +77,6 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
     });
   }, [theme]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 500);
-    return () => clearTimeout(timer);
-  }, [code]);
-
   const handleCopy = useCallback(async () => {
     if (!code) return;
 
@@ -99,7 +93,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
 
   return (
     <div
-      className={cn('group relative overflow-hidden rounded-xl border border-border/80 bg-[hsl(var(--code-surface))]')}
+      className={cn('group relative overflow-hidden rounded-xl border border-border/70 bg-[hsl(var(--code-surface))]')}
     >
       <div className="relative">
         {showCopyButton && (
@@ -108,7 +102,7 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
               onClick={handleCopy}
               variant="outline"
               size="xs"
-              className="invisible group-hover:visible"
+              className="opacity-100 sm:invisible sm:group-hover:visible"
               title={isCopied ? 'Copied!' : 'Copy code'}
               aria-label={isCopied ? 'Copied!' : 'Copy code'}
             >
@@ -121,30 +115,22 @@ export const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
           </div>
         )}
 
-        <div className="relative">
-          {isLoading ? (
-            <div className="flex h-24 items-center justify-center text-muted-foreground">
-              <Loader2 className="size-4 animate-spin" />
-            </div>
-          ) : (
-            <CodeMirror
-              value={code}
-              height="auto"
-              editable={false}
-              theme={editorTheme}
-              extensions={getLanguageExtension()}
-              basicSetup={{
-                lineNumbers,
-                foldGutter: false,
-                highlightActiveLineGutter: false,
-                highlightActiveLine: false,
-                tabSize: 2,
-              }}
-              className="p-2 font-mono text-sm font-medium leading-6"
-              {...rest}
-            />
-          )}
-        </div>
+        <CodeMirror
+          value={code}
+          height="auto"
+          editable={false}
+          theme={editorTheme}
+          extensions={getLanguageExtension()}
+          basicSetup={{
+            lineNumbers,
+            foldGutter: false,
+            highlightActiveLineGutter: false,
+            highlightActiveLine: false,
+            tabSize: 2,
+          }}
+          className="p-2 font-mono text-sm font-medium leading-6"
+          {...rest}
+        />
       </div>
     </div>
   );
