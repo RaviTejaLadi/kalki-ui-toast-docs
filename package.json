@@ -26,7 +26,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "kalki-ui": "^3.2.1",
-    "kalki-ui-toast": "^1.0.0",
+    "kalki-ui-toast": "file:../kalki-ui-toast",
     "lucide-react": "^0.474.0",
     "prettier": "^2.6.2",
     "react": "^18.3.1",

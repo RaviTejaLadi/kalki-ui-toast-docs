@@ -3,19 +3,18 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import 'kalki-ui/styles.css';
 import './index.css';
-import { ToastProvider, ToastContainer } from '@/components/common/toast/index';
-import { ThemeProvider } from './components/context/ThemeContext.js';
+import { Toaster } from 'kalki-ui-toast';
+import { ThemeProvider, useTheme } from './components/context/ThemeContext.js';
 import { useToastStore } from './store/useToastPositionStore';
 
 const Main = () => {
   const { position } = useToastStore();
+  const { theme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <ToastProvider>
-        <App />
-        <ToastContainer position={position} />
-      </ToastProvider>
+      <App />
+      <Toaster position={position} theme={theme} />
     </div>
   );
 };

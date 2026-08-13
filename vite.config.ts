@@ -12,9 +12,15 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom', 'kalki-ui'],
   },
+  optimizeDeps: {
+    exclude: ['kalki-ui-toast'],
+  },
   server: {
     port: 3030,
     open: true,
+    fs: {
+      allow: [path.resolve(__dirname, '..')],
+    },
     watch: {
       usePolling: true,
       interval: 50,

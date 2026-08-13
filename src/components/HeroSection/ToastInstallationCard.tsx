@@ -1,17 +1,10 @@
 import { Card } from 'kalki-ui';
-import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
+import { SyntaxHighlighter } from '../SyntaxHighLighter';
 
 const ToastInstallationCard = () => {
   const stepOne = `npm i kalki-ui-toast`;
-  const stepTwo = `<ToastProvider>
-  <App />
-  <ToastContainer />
-</ToastProvider>`;
-  const stepThree = `addToast({
-  message: 'Please check your input',
-  variant: 'warning',
-  icon: <AlertCircle className="w-5 h-5" />,
-})`;
+  const stepTwo = `<Toaster position="top-right" />`;
+  const stepThree = `toast.success("Saved", { description: "Your changes are live." })`;
 
   const steps = [
     {
@@ -43,7 +36,7 @@ const ToastInstallationCard = () => {
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quick start</p>
         <h2 className="text-3xl font-bold tracking-tight text-foreground">Three steps to notifications</h2>
         <p className="mt-3 text-base text-muted-foreground">
-          Install, wrap your app, and show a toast from any component.
+          Install, mount the toaster, and show a toast from anywhere.
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">

@@ -1,4 +1,4 @@
-import { ToastPosition } from '@/components/common/toast';
+import { ToastPosition } from 'kalki-ui-toast';
 import { create } from 'zustand';
 
 interface ToastStore {

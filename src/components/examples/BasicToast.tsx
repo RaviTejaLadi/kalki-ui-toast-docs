@@ -1,42 +1,27 @@
-import { AlertCircle, Check, MessageSquare, X } from 'lucide-react';
+import { toast } from 'kalki-ui-toast';
 import { Button } from 'kalki-ui';
-import { useToast } from '../common/toast';
 
 const BasicToast = () => {
-  const { addToast } = useToast();
-
-  const showExampleToast = (
-    variant: 'default' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'help' | 'light' | 'dark'
-  ) => {
-    addToast({
-      message: 'This is a ' + variant + ' toast message',
-      variant: variant,
-      icon: <MessageSquare className="w-5 h-5" />,
-    });
-  };
   return (
     <div>
-      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Basic Toasts</h3>
+      <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground">Basic toasts</h3>
+      <p className="mb-4 text-sm text-muted-foreground">
+        Call a variant helper. Default icons and a progress bar are included.
+      </p>
       <div className="space-y-3">
-        <Button onClick={() => showExampleToast('success')} block variant="success" size="xs">
-          <Check className="w-4 h-4 mr-2" /> Success
-        </Button>
-        <Button onClick={() => showExampleToast('danger')} block variant="danger" size="xs">
-          <X className="w-4 h-4 mr-2" /> Error
+        <Button onClick={() => toast.success('Changes saved')} block variant="success" size="xs">
+          Success
         </Button>
         <Button
-          onClick={() =>
-            addToast({
-              message: 'Please check your input',
-              variant: 'warning',
-              icon: <AlertCircle className="w-5 h-5" />,
-            })
-          }
+          onClick={() => toast.error('Could not save', { description: 'Check your connection and try again.' })}
           block
-          variant="warning"
+          variant="danger"
           size="xs"
         >
-          <AlertCircle className="w-4 h-4 mr-2" /> Warning
+          Error
+        </Button>
+        <Button onClick={() => toast.warning('Your session expires in 5 minutes')} block variant="warning" size="xs">
+          Warning
         </Button>
       </div>
     </div>

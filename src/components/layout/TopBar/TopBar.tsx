@@ -8,6 +8,7 @@ const GITHUB_URL = 'https://github.com/RaviTejaLadi/kalki-ui-toast';
 const menu = [
   { title: 'Examples', url: '#examples' },
   { title: 'Docs', url: '#docs' },
+  { title: 'API', url: '#api' },
 ];
 
 const TopBar = () => {

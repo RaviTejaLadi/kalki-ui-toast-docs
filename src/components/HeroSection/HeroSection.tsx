@@ -1,25 +1,19 @@
-import { ArrowRight, BookOpen, ShoppingCart } from 'lucide-react';
+import { toast } from 'kalki-ui-toast';
 import { Badge, Button } from 'kalki-ui';
-import { useToast } from '../common/toast/ToastContext';
+import { ArrowRight, BookOpen } from 'lucide-react';
 import { FloatingShapes } from './FloatingShapes';
 import { ReactLogo, TailwindLogo, TypeScriptLogo } from './Logos';
 import { TextReveal } from './animations/TextReveal';
 import { GradientText } from './animations/GradientText';
 
 const HeroSection = () => {
-  const { addToast } = useToast();
-
-  const showMultilineToast = () => {
-    addToast({
-      message: (
-        <div className="flex flex-col gap-1">
-          <p className="font-semibold">Order Confirmed!</p>
-          <p className="text-sm text-muted-foreground">Your order #12345 has been placed successfully.</p>
-        </div>
-      ),
-      icon: <ShoppingCart className="w-5 h-5" />,
-      variant: 'success',
-      autoClose: 5000,
+  const showDemo = () => {
+    toast.success('Order confirmed', {
+      description: 'Your order #12345 has been placed successfully.',
+      action: {
+        label: 'View',
+        onClick: () => toast.info('Opening order #12345'),
+      },
     });
   };
 
@@ -43,7 +37,7 @@ const HeroSection = () => {
               pill
               className="border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur"
             >
-              Lightweight · Accessible · Customizable
+              Toaster + toast() · Accessible · Theme-aware
             </Badge>
           </TextReveal>
 
@@ -53,14 +47,15 @@ const HeroSection = () => {
                 <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-6xl">Kalki UI Toast</h1>
               </GradientText>
               <p className="mx-auto max-w-xl text-balance text-base font-medium text-muted-foreground md:text-lg">
-                A lightweight, customizable, and accessible toast notification system built with React and Tailwind CSS.
+                A production toast system for React. Mount once, call from anywhere, and keep styles scoped to the
+                library.
               </p>
             </div>
           </TextReveal>
 
           <TextReveal delay={550}>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button size="sm" onClick={showMultilineToast} className="group/arrow min-w-[10rem] font-semibold">
+              <Button size="sm" onClick={showDemo} className="group/arrow min-w-[10rem] font-semibold">
                 Try it out
                 <ArrowRight className="ml-2 size-4 transition-transform group-hover/arrow:translate-x-0.5" />
               </Button>

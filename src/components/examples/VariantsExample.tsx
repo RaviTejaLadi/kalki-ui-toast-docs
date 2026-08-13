@@ -1,41 +1,40 @@
-import { ToastVariant, useToast } from '../common/toast';
-import { SyntaxHighlighter } from '../common/SyntaxHighLighter/SyntaxHighLighter';
+import { toast, type ToastVariant } from 'kalki-ui-toast';
+import { SyntaxHighlighter } from '@/components/SyntaxHighLighter';
 import { Button, ButtonIcon, ButtonText } from 'kalki-ui';
-
 import { Circle, CircleDot, Info, CheckCircle, AlertTriangle, XCircle, HelpCircle, Sun, Moon } from 'lucide-react';
 
 const variants: { label: string; value: ToastVariant; icon: JSX.Element }[] = [
-  { label: 'Default', value: 'default', icon: <Circle className="h-3.5 w-3.5" /> }, // Neutral
-  { label: 'Primary', value: 'primary', icon: <CircleDot className="h-3.5 w-3.5" /> }, // Highlighted dot
-  { label: 'Secondary', value: 'secondary', icon: <Circle className="h-3.5 w-3.5" /> }, // Simple circle
-  { label: 'Success', value: 'success', icon: <CheckCircle className="h-3.5 w-3.5" /> }, // Checkmark circle
-  { label: 'Info', value: 'info', icon: <Info className="h-3.5 w-3.5" /> }, // Info icon
-  { label: 'Warning', value: 'warning', icon: <AlertTriangle className="h-3.5 w-3.5" /> }, // Warning triangle
-  { label: 'Danger', value: 'danger', icon: <XCircle className="h-3.5 w-3.5" /> }, // Cross circle
-  { label: 'Help', value: 'help', icon: <HelpCircle className="h-3.5 w-3.5" /> }, // Help circle
-  { label: 'Light', value: 'light', icon: <Sun className="h-3.5 w-3.5" /> }, // Sun icon
-  { label: 'Dark', value: 'dark', icon: <Moon className="h-3.5 w-3.5" /> }, // Moon icon
+  { label: 'Default', value: 'default', icon: <Circle className="h-3.5 w-3.5" /> },
+  { label: 'Primary', value: 'primary', icon: <CircleDot className="h-3.5 w-3.5" /> },
+  { label: 'Secondary', value: 'secondary', icon: <Circle className="h-3.5 w-3.5" /> },
+  { label: 'Success', value: 'success', icon: <CheckCircle className="h-3.5 w-3.5" /> },
+  { label: 'Info', value: 'info', icon: <Info className="h-3.5 w-3.5" /> },
+  { label: 'Warning', value: 'warning', icon: <AlertTriangle className="h-3.5 w-3.5" /> },
+  { label: 'Danger', value: 'danger', icon: <XCircle className="h-3.5 w-3.5" /> },
+  { label: 'Help', value: 'help', icon: <HelpCircle className="h-3.5 w-3.5" /> },
+  { label: 'Light', value: 'light', icon: <Sun className="h-3.5 w-3.5" /> },
+  { label: 'Dark', value: 'dark', icon: <Moon className="h-3.5 w-3.5" /> },
 ];
 
 const VariantsExample = () => {
-  const { addToast } = useToast();
-
   const handleVariantToast = (variant: ToastVariant) => {
-    addToast({
-      message: `This is a ${variant} toast!`,
+    toast(`This is a ${variant} toast`, {
       variant,
-      autoClose: 3000,
-      showClose: false,
-      icon: variants.find((v) => v.value === variant)?.icon,
+      description: `variant: "${variant}"`,
+      duration: 3000,
     });
   };
 
   return (
     <div className="mx-auto w-full">
-      <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground">Explore Toast Variants</h3>
+      <h3 className="mb-1 text-base font-semibold tracking-tight text-foreground">Variants</h3>
+      <p className="mb-4 text-sm text-muted-foreground">
+        Ten built-in looks. <code className="text-xs">toast.error()</code> maps to{' '}
+        <code className="text-xs">danger</code>.
+      </p>
 
-      <div className="flex flex-col  gap-6">
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {variants.map(({ label, value, icon }) => (
             <Button
               key={value}
@@ -48,12 +47,10 @@ const VariantsExample = () => {
             </Button>
           ))}
         </div>
-        <div className="">
-          <SyntaxHighlighter
-            code={`addToast({\n  message: "This is a ${variants[0].value} toast!",\n  variant: "${variants[0].value}",\n  autoClose: 3000\n});`}
-            language="jsx"
-          />
-        </div>
+        <SyntaxHighlighter
+          code={`toast.success("Saved");\ntoast.error("Could not save");\ntoast({ title: "Hello", variant: "help" });`}
+          language="jsx"
+        />
       </div>
     </div>
   );

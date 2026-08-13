@@ -17,6 +17,9 @@ const Footer = () => {
           <a href="#docs" className="transition-colors hover:text-foreground">
             Docs
           </a>
+          <a href="#api" className="transition-colors hover:text-foreground">
+            API
+          </a>
           <a
             href={GITHUB_URL}
             target="_blank"
