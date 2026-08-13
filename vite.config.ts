@@ -13,7 +13,7 @@ export default defineConfig({
     dedupe: ['react', 'react-dom', 'kalki-ui'],
   },
   optimizeDeps: {
-    exclude: ['kalki-ui-toast'],
+    include: ['react', 'react-dom', 'react/jsx-runtime'],
   },
   server: {
     port: 3030,
